@@ -17,6 +17,7 @@ import { GMapModule } from 'primeng/gmap';
 
 // Lottie
 import { LottieModule } from 'ngx-lottie';
+import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
 
 export function playerFactory() { 
   return import('lottie-web'); 
@@ -26,6 +27,7 @@ export function playerFactory() {
   declarations: [
     AppComponent,
     IndexComponent,
+    YoubikeStopComponent,
     BicycleLaneComponent
   ],
   imports: [

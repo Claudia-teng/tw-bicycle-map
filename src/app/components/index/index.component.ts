@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
@@ -10,12 +11,18 @@ import { AnimationOptions } from 'ngx-lottie';
 })
 export class IndexComponent {
 
+  constructor(private router: Router) {}
+
   public options: AnimationOptions = {
     path: 'assets/youbike.json',
   };
 
   public animationCreated(animationItem: AnimationItem): void {
     console.log(animationItem);
+  }
+
+  public navigateTo(page: string): void {
+    this.router.navigate([page]);
   }
 
 }
