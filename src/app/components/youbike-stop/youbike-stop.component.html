@@ -27,7 +27,7 @@
 </ng-container>
 <ng-template #showMap>
   <div class="map">
-    <img src="assets/navigate-icon.png" (click)="findNearbyStation()"/>
+    <img src="assets/navigate-icon.png" (click)="findCurrentPosition()"/>
     <p-gmap [options]="options"
             [overlays]="overlays"
             [style]="{'width':'100%','height':'100%'}" >

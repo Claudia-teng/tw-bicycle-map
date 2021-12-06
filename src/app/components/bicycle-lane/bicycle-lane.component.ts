@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
+import { cityList } from './city-list/city-list';
 
 @Component({
   selector: 'bicycle-lane',
   templateUrl: './bicycle-lane.component.html',
-  styleUrls: ['./bicycle-lane.component.sass']
+  styleUrls: ['./bicycle-lane.component.sass'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BicycleLaneComponent {
-  public options: any;
-  public overlays: any[];
 
-  public isRent: boolean = true;
+  public loading: boolean;
+  public cities: Array<SelectItem> = cityList;
+  public selectedCity: SelectItem;
+  
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.options = {
-        center: {lat: 36.890257, lng: 30.707417},
-        zoom: 12
-    };
+    this.selectedCity = this.cities[0];
   }
 
-  public onToggleView(): void {
-    this.isRent = !this.isRent;
+  public navigateToIndex(): void {
+    this.router.navigate(['']);
   }
+
 }

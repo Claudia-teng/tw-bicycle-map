@@ -2,6 +2,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -14,6 +15,7 @@ import { BicycleLaneComponent } from './components/bicycle-lane/bicycle-lane.com
 
 // PrimeNG
 import { GMapModule } from 'primeng/gmap';
+import { DropdownModule } from 'primeng/dropdown';
 
 // Lottie
 import { LottieModule } from 'ngx-lottie';
@@ -32,9 +34,11 @@ export function playerFactory() {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     GMapModule,
+    DropdownModule,
     LottieModule.forRoot({ player: playerFactory }),
     RouterModule.forRoot(appRoutes)
   ],

@@ -23,7 +23,7 @@ export class YoubikeStopComponent {
 
   ngOnInit() {
     this.loading = true;
-    this.findNearbyStation();
+    this.findCurrentPosition();
   }
 
   public navigateToIndex(): void {
@@ -34,7 +34,7 @@ export class YoubikeStopComponent {
     this.isRent = !this.isRent;
   }
 
-  public findNearbyStation(): void {
+  public findCurrentPosition(): void {
     navigator.geolocation.watchPosition((position) => {
       this.currentLat = position.coords.latitude;
       this.currentLng = position.coords.longitude;
@@ -54,4 +54,14 @@ export class YoubikeStopComponent {
       this.loading = false;
     })
   }
+
+  public findNearbyRentStation(): void {
+
+  }
+
+  public findNearbyParkStation(): void {
+
+  }
+
+
 }

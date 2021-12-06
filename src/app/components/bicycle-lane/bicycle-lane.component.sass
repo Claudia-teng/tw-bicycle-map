@@ -1,71 +1,66 @@
-.topbar
-  height: 10%
-  background-color: var(--yellow)
-  display: flex
-  align-items: center
-  > div
-    flex: 1
-  .logo
-    padding-left: 2rem
-
-button
-  background-color: var(--white)
-  color: var(--black)
-  border: none
-  border-radius: 50px
-  width: 18rem
-  height: 2.8rem
-  display: flex
-  align-items: center
-  position: relative
-  cursor: pointer
-  .rent, > .park
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 9rem
-    svg, p
-      transition: .5s
-      z-index: 100
-    p 
-      margin-left: .5rem
-      font-size: 0.9rem
-  .cover
-    z-index: 1
-    position: absolute
-    background-color: var(--black)
-    width: 9rem
-    height: 2.8rem
-    border-radius: 50px
-    transition: .5s
-  &.is-rent
-    .rent
-      svg path, p
-        color: var(--yellow)
-        fill: var(--yellow)
-      .park
-        svg path, p
-          color: var(--black)
-          fill: var(--black)
-    .cover
-      left: 0%
-  &.is-park
-    .rent
-      svg path, p
-        color: var(--black)
-        fill: var(--black)
-    .park
-      svg rect, p
-        color: var(--yellow)
-        fill: var(--yellow)
-      svg path
-        fill: var(--black)
-    .cover 
-      left: 50%
-
+bicycle-lane
   
+  .topbar
+    height: 10%
+    background-color: var(--yellow)
+    display: flex
+    align-items: center
+    justify-content: space-between
+    .logo
+      padding-left: 2rem
+      cursor: pointer
+    .dropdown
+      padding-right: 2rem 
+      .p-dropdown
+        background-color: black
+        border-radius: 50px
+        border: none
+        width: 10rem
+        height: 2.5rem
+        display: flex
+        align-items: center
+        &.p-focus
+          box-shadow: none
+      .p-dropdown-label
+        color: white
+        margin-left: 2rem
+      .p-dropdown-trigger
+        color: white
+      .p-dropdown-panel
+        border-radius: 15px
+      .p-dropdown-items-wrapper
+        background-color: black
+        border-radius: 15px
+      .p-dropdown-item
+        color: white
+        &:hover, &.p-highlight
+          background-color: var(--yellow) !important
+          color: black !important
 
+  .loading
+    text-align: center
+    margin-top: 1rem
+    img
+      width: 8%
 
-
-.map
-  height: 90%
+  .result
+    height: 90%
+    padding: 2rem 3rem
+    display: flex
+    flex-wrap: wrap
+  .card
+    width: 25rem
+    height: 7rem
+    padding: 1rem
+    margin: 1rem
+    background-color: var(--white)
+    border-radius: 6px
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
+    > div
+      display: flex
+      justify-content: space-between
+      align-items: center
+      color: var(--gray)
+      > div
+        display: flex
+        align-items: center
