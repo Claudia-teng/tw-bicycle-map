@@ -1,6 +1,6 @@
 <div class="topbar">
   <div class="logo">
-    <img src="assets/wheres-youbike.png"/>
+    <img (click)="navigateToIndex()" src="assets/wheres-youbike.png"/>
   </div>
   <button (click)="onToggleView()" [ngClass]="isRent ? 'is-rent': 'is-park'">
     <div class="rent active">
@@ -20,9 +20,17 @@
   </button>
   <div></div>
 </div>
-<div class="map">
-  <p-gmap [options]="options"
-          [overlays]="overlays"
-          [style]="{'width':'100%','height':'100%'}" >
-  </p-gmap>
-</div>
+<ng-container *ngIf="loading; else showMap">
+  <div class="loading">
+    <img src="assets/loading.gif"/>
+  </div>
+</ng-container>
+<ng-template #showMap>
+  <div class="map">
+    <img src="assets/navigate-icon.png" (click)="findNearbyStation()"/>
+    <p-gmap [options]="options"
+            [overlays]="overlays"
+            [style]="{'width':'100%','height':'100%'}" >
+    </p-gmap>
+  </div>
+</ng-template>
