@@ -1,16 +1,20 @@
 <div class="background">
-  <div>
-    <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
-    <img src="assets/wheres-youbike.png"/>
-    <img src="assets/index-slogan.png"/>
+  <div class="container">
+    <div class="logo-area">
+      <ng-lottie width="5rem" height="3rem" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <img src="assets/wheres-youbike.png"/>
+      <img src="assets/index-slogan.png"/>
+    </div>
+    <div class="btn-area">
+      <button>
+        尋找 Youbike
+      </button>
+      <button>
+        查詢自行車道
+      </button>
+      <button>
+        附近景點、美食
+      </button>
+    </div>
   </div>
-  <button>
-    尋找 Youbike
-  </button>
-  <button>
-    查詢自行車道
-  </button>
-  <button>
-    附近景點、美食
-  </button>
 </div>
