@@ -1,0 +1,16 @@
+export interface BikeShape {
+  RouteName: string,
+  AuthorityName? : string,
+  CityCode: string,
+  City: string,
+  Town?: string,
+  RoadSectionStart?: string,
+  RoadSectionEnd?: string,
+  Direction?: string,
+  CyclingType?: string,
+  CyclingLength?: number,
+  FinishedTime?: string,
+  UpdateTime: string,
+  Geometry: string,
+  EncodedPolyline: string,
+  }
