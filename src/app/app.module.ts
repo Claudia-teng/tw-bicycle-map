@@ -1,5 +1,5 @@
 // Angular
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -12,6 +12,16 @@ import { AuthInterceptorService } from './auth/auth.intercepter.service';
 import { IndexComponent } from './components/index/index.component';
 import { BicycleLaneComponent } from './components/bicycle-lane/bicycle-lane.component';
 
+// PrimeNG
+import { GMapModule } from 'primeng/gmap';
+
+// Lottie
+import { LottieModule } from 'ngx-lottie';
+
+export function playerFactory() { 
+  return import('lottie-web'); 
+} 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +32,8 @@ import { BicycleLaneComponent } from './components/bicycle-lane/bicycle-lane.com
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    GMapModule,
+    LottieModule.forRoot({ player: playerFactory }),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
@@ -31,6 +43,7 @@ import { BicycleLaneComponent } from './components/bicycle-lane/bicycle-lane.com
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bicycle-lane.component.sass']
 })
 export class BicycleLaneComponent {
-
+  
 }
