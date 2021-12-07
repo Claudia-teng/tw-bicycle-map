@@ -80,6 +80,9 @@ button
     z-index: 1
     cursor: pointer
 
+.footer
+  display: none
+
 // google map style
 ::ng-deep 
   .gm-style-iw-d
@@ -87,3 +90,22 @@ button
       margin-left: .5rem
       font-weight: bold !important
       font-style: italic
+
+@include breakpoint(phone)
+  .topbar
+    .logo, p
+      display: none
+  .footer
+    display: visible
+    height: 10%
+    background-color: var(--yellow)
+    display: flex
+  > div
+    flex: 1
+    transition: .5s
+    svg path, p
+      color: var(--white)
+      fill: var(--white)
+    &.active
+      svg path, p
+        color: var(--black)
