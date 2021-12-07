@@ -56,17 +56,29 @@ export class BicycleLaneMapComponent {
       // center
       this.options = {
         center: {lat: +polyLineLocation[0].lat, lng: +polyLineLocation[0].lng},
-        zoom: 17
+        zoom: 15
       } 
       // console.log('this.options.center', this.options.center)
 
       // polygon
+      const lineSymbol = {
+        path: "M 0,-1 0,1",
+        strokeOpacity: 1,
+        scale: 4,
+      };
+
       this.overlays.push(new google.maps.Polyline(
         { path: polyLineLocation, 
-          geodesic: true, 
-          strokeColor: '#000000', 
-          strokeOpacity: 1, 
-          strokeWeight: 3 }));
+          geodesic: true,  
+          strokeOpacity: 0,
+          icons: [
+            {
+              icon: lineSymbol,
+              offset: "0",
+              repeat: "20px",
+            },
+          ]
+        }));
 
       // marker
       this.overlays.push(new google.maps.Marker(
