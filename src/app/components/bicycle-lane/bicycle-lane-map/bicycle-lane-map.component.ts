@@ -30,7 +30,7 @@ export class BicycleLaneMapComponent {
       this.routeName = res.routeName;
       this.infoWindow = new google.maps.InfoWindow();
       this.getLaneInfo();
-    });
+    })
   }
 
   public navigateToIndex(): void {
@@ -45,38 +45,36 @@ export class BicycleLaneMapComponent {
       this.lane.GeometryArray = this.lane.Geometry.split(',').map(position => position.split(' '))
       // console.log('this.lane.GeometryArray', this.lane.GeometryArray)
 
-      let polygonLocation = [];
+      let polyLineLocation = [];
       this.lane.GeometryArray.forEach(position => {
-        polygonLocation.push({
+        polyLineLocation.push({
           lat: +position[1],
           lng: +position[0]
         })
       });
-      console.log('polygonLocation', polygonLocation)
       
       // center
       this.options = {
-        center: {lat: +polygonLocation[0].lat, lng: +polygonLocation[0].lng},
+        center: {lat: +polyLineLocation[0].lat, lng: +polyLineLocation[0].lng},
         zoom: 17
-      };
-
-      console.log('this.options.center', this.options.center)
+      } 
+      // console.log('this.options.center', this.options.center)
 
       // polygon
       this.overlays.push(new google.maps.Polyline(
-        { path: polygonLocation, 
+        { path: polyLineLocation, 
           geodesic: true, 
-          strokeColor: '#1CC8EE', 
+          strokeColor: '#000000', 
           strokeOpacity: 1, 
           strokeWeight: 3 }));
 
       // marker
       this.overlays.push(new google.maps.Marker(
-        { position: {lat: +polygonLocation[0].lat, lng: +polygonLocation[0].lng},
+        { position: {lat: +polyLineLocation[0].lat, lng: +polyLineLocation[0].lng},
           icon:  'assets/lane-start-icon.png'
       }));
       this.overlays.push(new google.maps.Marker(
-        { position: {lat: +polygonLocation[polygonLocation.length-1].lat, lng: +polygonLocation[polygonLocation.length-1].lng},
+        { position: {lat: +polyLineLocation[polyLineLocation.length-1].lat, lng: +polyLineLocation[polyLineLocation.length-1].lng},
           icon:  'assets/lane-end-icon.png'
       }))
 
