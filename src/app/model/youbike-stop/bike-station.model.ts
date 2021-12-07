@@ -2,7 +2,7 @@ import { NameType } from "./name-type.model";
 import { PointType } from "./point-type.model";
 
 export interface BikeStation {
-  StationUID? : string,
+  StationUID?: string,
   StationID?: string,
   AuthorityID?: string,
   StationName?: NameType,
@@ -12,5 +12,7 @@ export interface BikeStation {
   BikesCapacity?: number,
   ServiceType?: number,
   SrcUpdateTime?: string,
-  UpdateTime: string
-  }
+  UpdateTime: string,
+  AvailableRentBikes?: number,
+  AvailableReturnBikes?: number,
+}

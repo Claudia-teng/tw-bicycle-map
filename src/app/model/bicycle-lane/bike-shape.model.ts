@@ -12,5 +12,6 @@ export interface BikeShape {
   FinishedTime?: string,
   UpdateTime: string,
   Geometry: string,
+  GeometryArray?: Array<any>,
   EncodedPolyline: string,
-  }
+}

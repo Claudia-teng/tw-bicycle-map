@@ -30,6 +30,7 @@
     <img src="assets/navigate-icon.png" (click)="findCurrentPosition()"/>
     <p-gmap [options]="options"
             [overlays]="overlays"
+            (onOverlayClick)="handleOverlayClick($event)"
             [style]="{'width':'100%','height':'100%'}" >
     </p-gmap>
   </div>

@@ -11,7 +11,7 @@ import { appRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth.intercepter.service';
 import { IndexComponent } from './components/index/index.component';
-import { BicycleLaneComponent } from './components/bicycle-lane/bicycle-lane.component';
+import { BicycleLaneListComponent } from './components/bicycle-lane/bicycle-lane-list/bicycle-lane-list.component';
 
 // PrimeNG
 import { GMapModule } from 'primeng/gmap';
@@ -20,6 +20,8 @@ import { DropdownModule } from 'primeng/dropdown';
 // Lottie
 import { LottieModule } from 'ngx-lottie';
 import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
+import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
+
 
 export function playerFactory() { 
   return import('lottie-web'); 
@@ -30,7 +32,8 @@ export function playerFactory() {
     AppComponent,
     IndexComponent,
     YoubikeStopComponent,
-    BicycleLaneComponent
+    BicycleLaneListComponent,
+    BicycleLaneMapComponent
   ],
   imports: [
     BrowserModule,

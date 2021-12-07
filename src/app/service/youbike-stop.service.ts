@@ -4,18 +4,18 @@ import { Observable } from "rxjs";
 import { BikeAvailability, BikeStation } from "../model";
 
 @Injectable({ providedIn: 'root' })
-export class NearbyService {
+export class YoubikeStopService {
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  public getNearbyStop(): Observable<Array<BikeStation>>{
-    return this.http.get<Array<BikeStation>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy`);
+  public getNearbyStop(lat: number, lon: number): Observable<Array<BikeStation>>{
+    return this.http.get<Array<BikeStation>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 500)&$format=JSON`);
   }
 
   public getNearbyAvailability(lat: number, lon: number): Observable<Array<BikeAvailability>>{
-    return this.http.get<Array<BikeAvailability>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 300)&$format=JSON`);
+    return this.http.get<Array<BikeAvailability>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 500)&$format=JSON`);
   }
 
   public getStationByCity(city: string): Observable<Array<BikeStation>>{
