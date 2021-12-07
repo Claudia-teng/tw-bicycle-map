@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BikeShape } from 'src/app/model';
 import { BicycleLaneService } from 'src/app/service/bicycle-lane.service';
@@ -22,6 +23,7 @@ export class BicycleLaneMapComponent {
   
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private location: Location,
               private bicycleLaneService: BicycleLaneService) {}
 
   ngOnInit() {
@@ -33,8 +35,8 @@ export class BicycleLaneMapComponent {
     })
   }
 
-  public navigateToIndex(): void {
-    this.router.navigate(['']);
+  public navigateToLaneList(): void {
+    this.location.back()
   }
 
   public getLaneInfo(): void {

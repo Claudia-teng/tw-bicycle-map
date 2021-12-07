@@ -1,3 +1,5 @@
+@import '../../../styles'
+
 .topbar
   height: 10%
   background-color: var(--yellow)
@@ -73,8 +75,9 @@ button
 
 .map
   height: 90%
+  position: relative
   img
-    position: fixed
+    position: absolute
     right: 5%
     bottom: 5%
     z-index: 1
@@ -91,21 +94,83 @@ button
       font-weight: bold !important
       font-style: italic
 
-@include breakpoint(phone)
+@include breakpoint(pad)
   .topbar
-    .logo, p
+    height: 8%
+    button
       display: none
   .footer
-    display: visible
+    height: 8%
+    background-color: var(--yellow)
+    display: flex
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1
+      transition: .5s
+      p
+        margin-left: .5rem
+    .rent
+      svg path, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+    .park
+      svg rect, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg rect, p
+          color: var(--black)
+          fill: var(--black)
+  .loading
+    img
+      width: 15%
+  .map
+    height: 84%
+    img
+      right: 8%
+
+@include breakpoint(phone)
+  .topbar
+    button
+      display: none
+  .footer
     height: 10%
     background-color: var(--yellow)
     display: flex
-  > div
-    flex: 1
-    transition: .5s
-    svg path, p
-      color: var(--white)
-      fill: var(--white)
-    &.active
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1
+      transition: .5s
+      p
+        margin-left: .5rem
+    .rent
       svg path, p
-        color: var(--black)
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+    .park
+      svg rect, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg rect, p
+          color: var(--black)
+          fill: var(--black)
+  .loading
+    img
+      width: 15%
+  .map
+    height: 80%
+    img
+      right: 15%

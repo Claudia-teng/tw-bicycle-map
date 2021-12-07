@@ -1,83 +1,103 @@
-bicycle-lane-list
+@import '../../../../styles'
   
-  .topbar
-    height: 10%
-    background-color: var(--yellow)
-    display: flex
-    align-items: center
-    justify-content: space-between
-    .logo
-      padding-left: 2rem
-      cursor: pointer
-    .dropdown
-      padding-right: 2rem 
-      .p-dropdown
-        background-color: black
-        border-radius: 50px
-        border: none
-        width: 10rem
-        height: 2.5rem
-        display: flex
-        align-items: center
-        &.p-focus
-          box-shadow: none
-      .p-dropdown-label
-        color: white
-        margin-left: 2rem
-      .p-dropdown-trigger
-        color: white
-      .p-dropdown-panel
-        border-radius: 15px
-      .p-dropdown-items-wrapper
-        background-color: black
-        border-radius: 15px
-      .p-dropdown-item
-        color: white
-        &:hover, &.p-highlight
-          background-color: var(--yellow) !important
-          color: black !important
-
-  .loading
-    text-align: center
-    margin-top: 1rem
-    img
-      width: 8%
-
-  .result
-    height: 90%
-  
-  .card-area
-    padding: 2rem 3rem
-    display: flex
-    flex-wrap: wrap
-    height: 100%
-    overflow-y: scroll
-    &::-webkit-scrollbar
-      display: none
-
-  .card
-    width: 25rem
-    height: 7rem
-    padding: 1rem
-    margin: 1rem
-    background-color: var(--white)
-    border-radius: 6px
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
+.topbar
+  height: 10%
+  background-color: var(--yellow)
+  display: flex
+  align-items: center
+  justify-content: space-between
+  .logo
+    padding-left: 2rem
     cursor: pointer
-    transition: .3s
-    > p
-      overflow: hidden
-      white-space: nowrap
-      text-overflow: ellipsis
+  .dropdown
+    padding-right: 2rem 
+  ::ng-deep 
+    .p-dropdown
+      background-color: black
+      border-radius: 50px
+      border: none
+      width: 10rem
+      height: 2.5rem
+      display: flex
+      align-items: center
+      &.p-focus
+        box-shadow: none
+    .p-dropdown-label
+      color: white
+      margin-left: 2rem
+    .p-dropdown-trigger
+      color: white
+    .p-dropdown-panel
+      border-radius: 15px
+    .p-dropdown-items-wrapper
+      background-color: black
+      border-radius: 15px
+    .p-dropdown-item
+      color: white
+      &:hover, &.p-highlight
+        background-color: var(--yellow) !important
+        color: black !important
+
+.loading
+  text-align: center
+  margin-top: 1rem
+  img
+    width: 8%
+
+.result
+  display: flex
+  align-items: center
+  height: 90%
+
+.card-area
+  padding: 0rem 3rem
+  display: flex
+  flex-wrap: wrap
+  height: 90%
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    display: none
+
+.card
+  width: 30%
+  height: 7rem
+  padding: 1rem
+  margin: 1rem
+  background-color: var(--white)
+  border-radius: 6px
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  transition: .3s
+  > p
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+  > div
+    display: flex
+    justify-content: space-between
+    align-items: center
+    color: var(--gray)
     > div
       display: flex
-      justify-content: space-between
       align-items: center
-      color: var(--gray)
-      > div
-        display: flex
-        align-items: center
-    &:hover
-      background-color: var(--black)
-      > div, p
-        color: var(--yellow)
+  &:hover
+    background-color: var(--black)
+    > div, p
+      color: var(--yellow)
+
+@include breakpoint(pad)
+  .loading
+    img
+      width: 15%
+  
+  .card
+    width: 45%
+
+@include breakpoint(phone)
+  .loading
+    img
+      width: 15%
+
+  .card
+    width: 100%
+    margin: .5rem 0rem

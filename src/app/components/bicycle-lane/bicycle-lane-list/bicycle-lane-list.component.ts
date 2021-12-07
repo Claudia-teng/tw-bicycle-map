@@ -9,7 +9,6 @@ import { cityList } from './city-list/city-list';
   selector: 'bicycle-lane-list',
   templateUrl: './bicycle-lane-list.component.html',
   styleUrls: ['./bicycle-lane-list.component.sass'],
-  encapsulation: ViewEncapsulation.None
 })
 export class BicycleLaneListComponent {
 
