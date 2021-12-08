@@ -28,6 +28,18 @@
 <ng-template #showMap>
   <div class="map">
     <img src="assets/navigate-icon.png" (click)="findCurrentPosition()"/>
+    <div class="search-bar">
+      <p-dropdown [options]="cities" 
+                  [(ngModel)]="selectedCity" 
+                  scrollHeight="250px"
+                  optionLabel="label"
+                  (onChange)="onCityChange()">
+      </p-dropdown>
+      <input placeholder="尋找站點"/>
+      <button>
+        <i class="pi pi-search"></i>
+      </button>
+    </div>
     <p-gmap [options]="options"
             [overlays]="overlays"
             (onOverlayClick)="handleOverlayClick($event)"

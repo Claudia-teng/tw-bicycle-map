@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
 import { BikeStation } from 'src/app/model';
 import { YoubikeStopService } from 'src/app/service/youbike-stop.service';
+import { cityList } from '../shared/city-list/city-list';
 declare var google: any
 
 @Component({
@@ -17,6 +19,9 @@ export class YoubikeStopComponent {
   public overlays: any[];
   public infoWindow: any = [];
 
+  public cities: Array<SelectItem> = cityList;
+  public selectedCity: SelectItem;
+
   public currentLat: number;
   public currentLng: number;
 
@@ -29,6 +34,7 @@ export class YoubikeStopComponent {
 
   ngOnInit() {
     this.loading = true;
+    this.selectedCity = this.cities[0].value;
     this.infoWindow = new google.maps.InfoWindow();
     this.findCurrentPosition();
   }
@@ -39,16 +45,26 @@ export class YoubikeStopComponent {
 
   public onToggleView(): void {
     this.isRent = !this.isRent;
+    this.overlays = [];
+    this.overlays = [ 
+      new google.maps.Marker(
+        { position: 
+          { lat: this.currentLat,
+            lng: this.currentLng
+          },
+        })
+    ];
     this.bindGoogleMap();
   }
 
   public findCurrentPosition(): void {
-    navigator.geolocation.watchPosition((position) => {
+    navigator.geolocation.getCurrentPosition((position) => {
       this.currentLat = position.coords.latitude;
       this.currentLng = position.coords.longitude;
       this.options = {
         center: {lat: this.currentLat, lng: this.currentLng},
-        zoom: 17
+        zoom: 17,
+        mapTypeControl: false
       };
 
       this.overlays = [ 
@@ -86,7 +102,7 @@ export class YoubikeStopComponent {
   }
 
   public bindGoogleMap(): void {
-    // console.log('this.isRent', this.isRent)
+    console.log('this.isRent', this.isRent)
     this.stopResult.forEach(stop => {
       let html = `<p>${stop.StationName.Zh_tw}</p>
                   <p>可借數量 <span class="number">${stop.AvailableRentBikes.toString()}</span></p>
@@ -116,5 +132,8 @@ export class YoubikeStopComponent {
         this.infoWindow.open(event.map, event.overlay);
         event.map.setCenter(event.overlay.getPosition());
       }
+  }
+
+  public onCityChange() : void {
   }
 }

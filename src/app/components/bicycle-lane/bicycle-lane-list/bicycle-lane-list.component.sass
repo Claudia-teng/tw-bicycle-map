@@ -59,7 +59,7 @@
     display: none
 
 .card
-  width: 30%
+  width: calc((100% - 1rem * 6) / 3)
   height: 7rem
   padding: 1rem
   margin: 1rem
@@ -80,6 +80,12 @@
     > div
       display: flex
       align-items: center
+    p
+      margin: 0
+      max-width: 100px
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
   &:hover
     background-color: var(--black)
     > div, p
@@ -91,7 +97,7 @@
       width: 20%
   
   .card
-    width: 45%
+    width: calc((100% - 1rem * 4) / 2)
 
 @include breakpoint(phone)
   .loading
