@@ -4,7 +4,6 @@ import { SelectItem } from 'primeng/api';
 import { BikeStation } from 'src/app/model';
 import { YoubikeStopService } from 'src/app/service/youbike-stop.service';
 import { cityList } from '../shared/city-list/city-list';
-declare var google: any
 
 @Component({
   selector: 'youbike-stop',
@@ -15,10 +14,6 @@ declare var google: any
 export class YoubikeStopComponent {
   public loading: boolean = true;
 
-  public options: any;
-  public overlays: any[] = [];
-  public infoWindow: any = [];
-
   public cities: Array<SelectItem> = cityList;
   public selectedCity: SelectItem;
   public inputSearch: string;
@@ -27,6 +22,8 @@ export class YoubikeStopComponent {
   public currentLng: number;
 
   public isRent: boolean = true;
+  public isFindNearby: boolean;
+  public userLocation: Array<any>;
 
   public stopResult: Array<BikeStation>;
 
@@ -36,23 +33,17 @@ export class YoubikeStopComponent {
   ngOnInit() {
     this.loading = true;
     this.selectedCity = this.cities[0];
-    this.infoWindow = new google.maps.InfoWindow();
-    this.queryStopByCity();
+    this.onSearchStopByCity();
   }
 
   public navigateToIndex(): void {
     this.router.navigate(['']);
   }
 
-  public queryStopByCity() : void {
-    this.overlays = [];
+  public onSearchStopByCity() : void {
+    this.isFindNearby = false;
     this.youbikeStopService.getStationByCity(this.selectedCity.value, this.inputSearch).subscribe(res => {
       this.stopResult = res;
-      this.options = {
-        center: {lat: this.stopResult[0].StationPosition.PositionLat, lng: this.stopResult[0].StationPosition.PositionLon},
-        zoom: 17,
-        mapTypeControl: false
-      };
       this.bindCityStopAvailability();
     })
   }
@@ -67,42 +58,21 @@ export class YoubikeStopComponent {
           }
         })
       })
-      this.bindGoogleMap();
+      this.loading = false;
     })
   }
 
   public onToggleView(): void {
     this.isRent = !this.isRent;
-    this.overlays = [];
-    // this.overlays = [ 
-    //   new google.maps.Marker(
-    //     { position: 
-    //       { lat: this.currentLat,
-    //         lng: this.currentLng
-    //       },
-    //     })
-    // ];
-    this.bindGoogleMap();
+    this.isFindNearby = false;
   }
 
   public findCurrentPosition(): void {
+    this.isFindNearby = true;
     navigator.geolocation.getCurrentPosition((position) => {
+      this.userLocation = [position.coords.latitude, position.coords.longitude];
       this.currentLat = position.coords.latitude;
       this.currentLng = position.coords.longitude;
-      this.options = {
-        center: {lat: this.currentLat, lng: this.currentLng},
-        zoom: 17,
-        mapTypeControl: false
-      };
-
-      this.overlays = [ 
-        new google.maps.Marker(
-          { position: 
-            { lat: this.currentLat,
-              lng: this.currentLng
-            },
-          })
-      ]
       this.findNearbyStation();
     })
   }
@@ -125,40 +95,7 @@ export class YoubikeStopComponent {
           }
         })
       })
-      this.bindGoogleMap();
+      this.loading = false;
     })
-  }
-
-  public bindGoogleMap(): void {
-    console.log('this.isRent', this.isRent)
-    this.stopResult.forEach(stop => {
-      let html = `<p>${stop.StationName.Zh_tw}</p>
-                  <p>可借數量 <span class="number">${stop.AvailableRentBikes.toString()}</span></p>
-                  <p>可停空位 <span class="number">${stop.AvailableReturnBikes.toString()}</span></p>`
-      this.overlays.push(new google.maps.Marker(
-        { position: {lat: stop.StationPosition.PositionLat, lng: stop.StationPosition.PositionLon}, 
-          title: html,
-          label: {
-            text: this.isRent ? stop.AvailableRentBikes.toString() : stop.AvailableReturnBikes.toString(),
-            fontWeight: "bold",
-            color: this.isRent ? '#000000' : '#FED801',
-          },
-          icon: {
-            url: this.isRent ? 'assets/rent-icon.png' : 'assets/part-icon.png',
-            labelOrigin: new google.maps.Point(18, 20),
-          }
-        }));
-    })
-    this.loading = false;
-  }
-
-  public handleOverlayClick(event: any) {
-    let isMarker = event.overlay.getTitle != undefined;
-      if (isMarker) {
-        let title = event.overlay.getTitle();
-        this.infoWindow.setContent('' + title + '');
-        this.infoWindow.open(event.map, event.overlay);
-        event.map.setCenter(event.overlay.getPosition());
-      }
   }
 }

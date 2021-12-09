@@ -36,15 +36,15 @@
       </p-dropdown>
       <input placeholder="尋找站點"
             [(ngModel)]="inputSearch"/>
-      <button (click)="queryStopByCity()">
+      <button (click)="onSearchStopByCity()">
         <i class="pi pi-search"></i>
       </button>
     </div>
-    <p-gmap [options]="options"
-            [overlays]="overlays"
-            (onOverlayClick)="handleOverlayClick($event)"
-            [style]="{'width':'100%','height':'100%'}" >
-    </p-gmap>
+    <youbike-stop-leaflet  [isRent]="isRent"
+              [isFindNearby]="isFindNearby"
+              [userLocation]="userLocation"
+              [stopResult]="stopResult">
+    </youbike-stop-leaflet>
   </div>
   <div class="footer">
     <div class="rent" 

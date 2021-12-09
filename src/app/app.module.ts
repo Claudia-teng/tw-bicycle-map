@@ -21,6 +21,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { LottieModule } from 'ngx-lottie';
 import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
 import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
+import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-leaflet/youbike-stop-leaflet.component';
 
 
 export function playerFactory() { 
@@ -33,7 +34,8 @@ export function playerFactory() {
     IndexComponent,
     YoubikeStopComponent,
     BicycleLaneListComponent,
-    BicycleLaneMapComponent
+    BicycleLaneMapComponent,
+    YoubikeStopLeafletComponent
   ],
   imports: [
     BrowserModule,

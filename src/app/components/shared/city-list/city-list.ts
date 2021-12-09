@@ -10,20 +10,12 @@ export const cityList: Array<SelectItem> = [
     value: "NewTaipei"
   },
   {
-    label: "基隆市",
-    value: "Keelung"
-  },
-  {
     label: "桃園市",
     value: "Taoyuan"
   },
   {
     label: "新竹市",
     value: "Hsinchu"
-  },
-  {
-    label: "新竹縣",
-    value: "HsinchuCounty"
   },
   {
     label: "苗栗縣",
@@ -34,24 +26,8 @@ export const cityList: Array<SelectItem> = [
     value: "Taichung"
   },
   {
-    label: "南投縣",
-    value: "NantouCounty"
-  },
-  {
-    label: "彰化縣",
-    value: "ChanghuaCounty"
-  },
-  {
-    label: "雲林縣",
-    value: "YunlinCounty"
-  },
-  {
     label: "嘉義市",
     value: "Chiayi"
-  },
-  {
-    label: "嘉義縣",
-    value: "ChiayiCounty"
   },
   {
     label: "台南市",
@@ -66,27 +42,7 @@ export const cityList: Array<SelectItem> = [
     value: "PingtungCounty"
   },
   {
-    label: "台東縣",
-    value: "TaitungCounty"
-  },
-  {
-    label: "花蓮縣",
-    value: "HualienCounty"
-  },
-  {
-    label: "宜蘭縣",
-    value: "YilanCounty"
-  },
-  {
-    label: "澎湖縣",
-    value: "PenghuCounty"
-  },
-  {
     label: "金門縣",
     value: "KinmenCounty"
   },
-  {
-    label: "連江縣",
-    value: "LienchiangCounty"
-  }
 ]

@@ -1,0 +1,38 @@
+.map-container
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.map-frame 
+  height: 100%
+
+#map 
+  height: 100%
+
+::ng-deep
+  .marker-icon 
+    > div
+      position: relative
+    span
+      width: 20px
+      position: absolute
+      top: 20%
+      left: calc((36px - 20px) / 2)
+      font-style: italic
+      font-weight: bold
+      display: flex
+      justify-content: center
+    .is-rent span
+      color: black
+    .is-park span
+      color: var(--yellow)
+  .leaflet-popup-content-wrapper
+    p
+      margin: .5rem 0rem
+    span.number
+      font-style: italic
+      font-weight: bold
+  .leaflet-popup-tip-container, .leaflet-popup-close-button
+    display: none
