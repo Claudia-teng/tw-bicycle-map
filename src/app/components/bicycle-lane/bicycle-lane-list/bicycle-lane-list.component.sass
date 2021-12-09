@@ -32,6 +32,8 @@
     .p-dropdown-items-wrapper
       background-color: black
       border-radius: 15px
+      &::-webkit-scrollbar
+        display: none
     .p-dropdown-item
       color: white
       &:hover, &.p-highlight
@@ -47,9 +49,11 @@
 .result
   display: flex
   align-items: center
+  justify-content: center
   height: 90%
 
 .card-area
+  max-width: 1400px
   padding: 0rem 3rem
   display: flex
   flex-wrap: wrap

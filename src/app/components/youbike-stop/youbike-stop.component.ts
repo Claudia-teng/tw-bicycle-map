@@ -16,11 +16,12 @@ export class YoubikeStopComponent {
   public loading: boolean = true;
 
   public options: any;
-  public overlays: any[];
+  public overlays: any[] = [];
   public infoWindow: any = [];
 
   public cities: Array<SelectItem> = cityList;
   public selectedCity: SelectItem;
+  public inputSearch: string;
 
   public currentLat: number;
   public currentLng: number;
@@ -34,26 +35,53 @@ export class YoubikeStopComponent {
 
   ngOnInit() {
     this.loading = true;
-    this.selectedCity = this.cities[0].value;
+    this.selectedCity = this.cities[0];
     this.infoWindow = new google.maps.InfoWindow();
-    this.findCurrentPosition();
+    this.queryStopByCity();
   }
 
   public navigateToIndex(): void {
     this.router.navigate(['']);
   }
 
+  public queryStopByCity() : void {
+    this.overlays = [];
+    this.youbikeStopService.getStationByCity(this.selectedCity.value, this.inputSearch).subscribe(res => {
+      this.stopResult = res;
+      this.options = {
+        center: {lat: this.stopResult[0].StationPosition.PositionLat, lng: this.stopResult[0].StationPosition.PositionLon},
+        zoom: 17,
+        mapTypeControl: false
+      };
+      this.bindCityStopAvailability();
+    })
+  }
+
+  public bindCityStopAvailability(): void {
+    this.youbikeStopService.getAvailabilityByCity(this.selectedCity.value).subscribe(res => {
+      this.stopResult.forEach(stop => {
+        res.forEach(availabilityStop => {
+          if (stop.StationUID === availabilityStop.StationUID) {
+            stop.AvailableRentBikes = availabilityStop.AvailableRentBikes;
+            stop.AvailableReturnBikes = availabilityStop.AvailableReturnBikes;
+          }
+        })
+      })
+      this.bindGoogleMap();
+    })
+  }
+
   public onToggleView(): void {
     this.isRent = !this.isRent;
     this.overlays = [];
-    this.overlays = [ 
-      new google.maps.Marker(
-        { position: 
-          { lat: this.currentLat,
-            lng: this.currentLng
-          },
-        })
-    ];
+    // this.overlays = [ 
+    //   new google.maps.Marker(
+    //     { position: 
+    //       { lat: this.currentLat,
+    //         lng: this.currentLng
+    //       },
+    //     })
+    // ];
     this.bindGoogleMap();
   }
 
@@ -82,12 +110,12 @@ export class YoubikeStopComponent {
   public findNearbyStation(): void {
     this.youbikeStopService.getNearbyStop(this.currentLat, this.currentLng).subscribe(res => {
       this.stopResult = res;
-      this.bindStationAvailablilty();
+      this.bindNaerbyStationAvailablilty();
     })
 
   }
 
-  public bindStationAvailablilty(): void {
+  public bindNaerbyStationAvailablilty(): void {
     this.youbikeStopService.getNearbyAvailability(this.currentLat, this.currentLng).subscribe(res => {
       this.stopResult.forEach(stop => {
         res.forEach(availabilityStop => {
@@ -132,8 +160,5 @@ export class YoubikeStopComponent {
         this.infoWindow.open(event.map, event.overlay);
         event.map.setCenter(event.overlay.getPosition());
       }
-  }
-
-  public onCityChange() : void {
   }
 }

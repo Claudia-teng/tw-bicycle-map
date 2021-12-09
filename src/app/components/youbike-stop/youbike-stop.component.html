@@ -32,11 +32,11 @@
       <p-dropdown [options]="cities" 
                   [(ngModel)]="selectedCity" 
                   scrollHeight="250px"
-                  optionLabel="label"
-                  (onChange)="onCityChange()">
+                  optionLabel="label">
       </p-dropdown>
-      <input placeholder="尋找站點"/>
-      <button>
+      <input placeholder="尋找站點"
+            [(ngModel)]="inputSearch"/>
+      <button (click)="queryStopByCity()">
         <i class="pi pi-search"></i>
       </button>
     </div>
