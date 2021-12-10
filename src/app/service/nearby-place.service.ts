@@ -10,7 +10,7 @@ export class NearbyPlaceService {
     private http: HttpClient,
   ) { }
 
-  public getAttractionsByCity(city: string): Observable<Array<ScenicSpotTourismInfo>>{
+  public getSpotsByCity(city: string): Observable<Array<ScenicSpotTourismInfo>>{
     return this.http.get<Array<ScenicSpotTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}`);
   }
 

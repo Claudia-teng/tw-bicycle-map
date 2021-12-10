@@ -9,8 +9,16 @@ import { Router } from '@angular/router';
 })
 export class PlaceListComponent {
 
+  public isSpot: boolean;
+
   constructor(private router: Router) {}
 
+  public navigateToIndex():void {
+    this.router.navigate(['']);
+  }
 
+  public onToggleView(): void {
+
+  }
 
 }

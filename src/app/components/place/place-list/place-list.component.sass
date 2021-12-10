@@ -1,0 +1,74 @@
+@import '../../../../styles'
+
+.topbar
+  height: 10%
+  background-color: var(--yellow)
+  display: flex
+  align-items: center
+  > div
+    flex: 1
+  .logo
+    padding-left: 2rem
+    img
+      cursor: pointer
+
+  button
+    background-color: var(--white)
+    color: var(--black)
+    border: none
+    border-radius: 50px
+    width: 18rem
+    height: 2.8rem
+    display: flex
+    align-items: center
+    position: relative
+    cursor: pointer
+    .spot, > .food
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 9rem
+      svg, p
+        transition: .5s
+        z-index: 100
+      p 
+        margin-left: .5rem
+        font-size: 0.9rem
+    .cover
+      z-index: 1
+      position: absolute
+      background-color: var(--black)
+      width: 9rem
+      height: 2.8rem
+      border-radius: 50px
+      transition: .5s
+    &.is-spot
+      .rent
+        svg path, p
+          color: var(--yellow)
+          fill: var(--yellow)
+        .park
+          svg path, p
+            color: var(--black)
+            fill: var(--black)
+      .cover
+        left: 0%
+    &.is-food
+      .rent
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+      .food
+        svg rect, p
+          color: var(--yellow)
+          fill: var(--yellow)
+        svg path
+          fill: var(--black)
+      .cover 
+        left: 50%
+
+.loading
+  text-align: center
+  margin-top: 1rem
+  img
+    width: 8%
