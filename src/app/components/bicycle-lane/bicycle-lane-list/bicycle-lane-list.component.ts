@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeShape } from 'src/app/model';
-import { BicycleLaneService } from 'src/app/service/bicycle-lane.service';
+import { BicycleLaneService } from 'src/app/service';
 import { cityList } from '../../shared/city-list/city-list';
 
 @Component({

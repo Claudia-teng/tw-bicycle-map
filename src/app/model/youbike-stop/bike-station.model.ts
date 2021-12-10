@@ -1,5 +1,4 @@
-import { NameType } from "./name-type.model";
-import { PointType } from "./point-type.model";
+import { NameType, PointType } from "../index"
 
 export interface BikeStation {
   StationUID?: string,

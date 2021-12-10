@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BikeShape } from 'src/app/model';
-import { BicycleLaneService } from 'src/app/service/bicycle-lane.service';
+import { BicycleLaneService } from 'src/app/service';
 
 @Component({
   selector: 'bicycle-lane-map',
@@ -22,8 +22,7 @@ export class BicycleLaneMapComponent {
   public city: string;
   public routeName: string;
   
-  constructor(private router: Router,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private location: Location,
               private bicycleLaneService: BicycleLaneService) {}
 

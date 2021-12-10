@@ -23,6 +23,9 @@ import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.com
 import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
 import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-leaflet/youbike-stop-leaflet.component';
 import { BicycleLaneLeafletComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-leaflet/bicycle-lane-leaflet.component';
+import { PlaceListComponent } from './components/place/place-list/place-list.component';
+import { PlaceDetailComponent } from './components/place/place-detail/place-detail.component';
+import { PlaceMapComponent } from './components/place/place-map/place-map.component';
 
 
 export function playerFactory() { 
@@ -37,7 +40,10 @@ export function playerFactory() {
     BicycleLaneListComponent,
     BicycleLaneMapComponent,
     YoubikeStopLeafletComponent,
-    BicycleLaneLeafletComponent
+    BicycleLaneLeafletComponent,
+    PlaceListComponent,
+    PlaceDetailComponent,
+    PlaceMapComponent
   ],
   imports: [
     BrowserModule,

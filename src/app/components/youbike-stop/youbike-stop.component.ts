@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeStation } from 'src/app/model';
-import { YoubikeStopService } from 'src/app/service/youbike-stop.service';
+import { YoubikeStopService } from 'src/app/service';
 import { cityList } from '../shared/city-list/city-list';
 
 @Component({
