@@ -26,6 +26,7 @@ export class YoubikeStopComponent {
   public userLocation: Array<any>;
 
   public stopResult: Array<BikeStation>;
+  public stopMapResult: Array<BikeStation>;
 
   constructor(private router: Router,
               private youbikeStopService: YoubikeStopService) {}
@@ -50,7 +51,7 @@ export class YoubikeStopComponent {
 
   public bindCityStopAvailability(): void {
     this.youbikeStopService.getAvailabilityByCity(this.selectedCity.value).subscribe(res => {
-      this.stopResult.forEach(stop => {
+      this.stopResult.map(stop => {
         res.forEach(availabilityStop => {
           if (stop.StationUID === availabilityStop.StationUID) {
             stop.AvailableRentBikes = availabilityStop.AvailableRentBikes;
@@ -58,6 +59,7 @@ export class YoubikeStopComponent {
           }
         })
       })
+      this.stopMapResult = this.stopResult;
       this.loading = false;
     })
   }
@@ -87,14 +89,15 @@ export class YoubikeStopComponent {
 
   public bindNaerbyStationAvailablilty(): void {
     this.youbikeStopService.getNearbyAvailability(this.currentLat, this.currentLng).subscribe(res => {
-      this.stopResult.forEach(stop => {
+      this.stopResult.map(stop => {
         res.forEach(availabilityStop => {
           if (stop.StationUID === availabilityStop.StationUID) {
             stop.AvailableRentBikes = availabilityStop.AvailableRentBikes;
             stop.AvailableReturnBikes = availabilityStop.AvailableReturnBikes;
           }
         })
-      })
+      });
+      this.stopMapResult = this.stopResult;
       this.loading = false;
     })
   }

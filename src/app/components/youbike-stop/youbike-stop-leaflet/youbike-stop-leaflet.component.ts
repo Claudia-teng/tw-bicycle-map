@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
+import { Component, AfterViewInit, Input, SimpleChanges } from '@angular/core';
 import { BikeStation } from 'src/app/model';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
@@ -19,12 +19,19 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
 
   constructor() { }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes', changes)
+    if (changes.isRent?.previousValue !== changes.isRent?.currentValue) {
+      this.initLayer();
+      return;
+    }
+
     if (this.isFindNearby) {
       this.navigateToUserLocation()
     } else {
       this.navigateToCityLocation();
     }
+
   }
 
   ngAfterViewInit(): void {
@@ -39,6 +46,11 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
   }
 
   private navigateToCityLocation(): void {
+    if (this.stopResult.length === 0) {
+      this.markers?.clearLayers();
+      return;
+    }
+
     this.map?.panTo(new L.LatLng(this.stopResult[0].StationPosition.PositionLat, this.stopResult[0].StationPosition.PositionLon));
     this.initLayer();
   }
@@ -83,11 +95,17 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
         }
     });
 
+    console.log('this.stopResult', this.stopResult)
+
     this.stopResult.forEach(stop => {
       let popupInfo = 
       `<p>${stop.StationName.Zh_tw}</p>
        <p>可借數量 <span class="number">${stop.AvailableRentBikes}</span></p>
        <p>可停空位 <span class="number">${stop.AvailableReturnBikes}</span></p>`
+      
+      console.log('stop', stop)
+      console.log('stop.AvailableRentBikes', stop.AvailableRentBikes)
+      console.log('stop.AvailableReturnBikes', stop.AvailableReturnBikes)
 
       let marker = new L.marker([stop.StationPosition.PositionLat, stop.StationPosition.PositionLon], {
         icon: new L.DivIcon({
@@ -95,11 +113,11 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
           html: this.isRent ?
             `<div class="is-rent">
               <img src="assets/rent-icon.png"/>
-              <span>${stop.AvailableRentBikes}</span>
+              <span>${stop?.AvailableRentBikes}</span>
              </div>` :
             `<div class="is-park">
               <img src="assets/park-icon.png"/>
-              <span>${stop.AvailableReturnBikes}</span>
+              <span>${stop?.AvailableReturnBikes}</span>
              </div>`
         })
       }).bindPopup(popupInfo);
