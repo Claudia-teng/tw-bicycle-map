@@ -7,10 +7,7 @@
   </div>
 </div>
 <div class="map">
-  <p-gmap *ngIf="options?.center"
-          [options]="options"
-          [overlays]="overlays"
-          [style]="{'width':'100%','height':'100%'}" >
-  </p-gmap>
+  <bicycle-lane-leaflet *ngIf="polyLineLocation.length" [polyLineLocation]="polyLineLocation">
+  </bicycle-lane-leaflet>
 </div>
 

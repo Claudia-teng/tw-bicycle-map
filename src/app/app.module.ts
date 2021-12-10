@@ -22,6 +22,7 @@ import { LottieModule } from 'ngx-lottie';
 import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
 import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
 import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-leaflet/youbike-stop-leaflet.component';
+import { BicycleLaneLeafletComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-leaflet/bicycle-lane-leaflet.component';
 
 
 export function playerFactory() { 
@@ -35,7 +36,8 @@ export function playerFactory() {
     YoubikeStopComponent,
     BicycleLaneListComponent,
     BicycleLaneMapComponent,
-    YoubikeStopLeafletComponent
+    YoubikeStopLeafletComponent,
+    BicycleLaneLeafletComponent
   ],
   imports: [
     BrowserModule,

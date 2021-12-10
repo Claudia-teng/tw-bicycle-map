@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BikeShape } from 'src/app/model';
 import { BicycleLaneService } from 'src/app/service/bicycle-lane.service';
-declare var google: any
 
 @Component({
   selector: 'bicycle-lane-map',
@@ -16,6 +15,8 @@ export class BicycleLaneMapComponent {
   public options: any;
   public overlays: any[] = [];
   public infoWindow: any = [];
+
+  public polyLineLocation: Array<any> = [];
 
   public lane: BikeShape;
   public city: string;
@@ -30,7 +31,6 @@ export class BicycleLaneMapComponent {
     this.route.queryParams.subscribe(res => {
       this.city = res.city;
       this.routeName = res.routeName;
-      this.infoWindow = new google.maps.InfoWindow();
       this.getLaneInfo();
     })
   }
@@ -44,54 +44,10 @@ export class BicycleLaneMapComponent {
       this.lane = res[0];
       // console.log(' this.lane',  this.lane)
       this.lane.Geometry = this.lane.Geometry.slice(18 ,this.lane.Geometry.length-3);
-      this.lane.GeometryArray = this.lane.Geometry.split(',').map(position => position.split(' '))
-      // console.log('this.lane.GeometryArray', this.lane.GeometryArray)
-
-      let polyLineLocation = [];
-      this.lane.GeometryArray.forEach(position => {
-        polyLineLocation.push({
-          lat: +position[1],
-          lng: +position[0]
-        })
-      });
-      
-      // center
-      this.options = {
-        center: {lat: +polyLineLocation[0].lat, lng: +polyLineLocation[0].lng},
-        zoom: 15
-      } 
-      // console.log('this.options.center', this.options.center)
-
-      // polygon
-      const lineSymbol = {
-        path: "M 0,-1 0,1",
-        strokeOpacity: 1,
-        scale: 4,
-      };
-
-      this.overlays.push(new google.maps.Polyline(
-        { path: polyLineLocation, 
-          geodesic: true,  
-          strokeOpacity: 0,
-          icons: [
-            {
-              icon: lineSymbol,
-              offset: "0",
-              repeat: "20px",
-            },
-          ]
-        }));
-
-      // marker
-      this.overlays.push(new google.maps.Marker(
-        { position: {lat: +polyLineLocation[0].lat, lng: +polyLineLocation[0].lng},
-          icon:  'assets/lane-start-icon.png'
-      }));
-      this.overlays.push(new google.maps.Marker(
-        { position: {lat: +polyLineLocation[polyLineLocation.length-1].lat, lng: +polyLineLocation[polyLineLocation.length-1].lng},
-          icon:  'assets/lane-end-icon.png'
-      }))
-
+      this.lane.GeometryArray = this.lane.Geometry.split(',').map(position => position.split(' '));
+      // console.log('this.lane.GeometryArray-1', this.lane.GeometryArray)
+      this.lane.GeometryArray.map(position => position.reverse());
+      this.polyLineLocation = this.lane.GeometryArray;
     })
   }
 

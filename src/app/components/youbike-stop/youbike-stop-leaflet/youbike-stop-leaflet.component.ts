@@ -95,17 +95,11 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
         }
     });
 
-    console.log('this.stopResult', this.stopResult)
-
     this.stopResult.forEach(stop => {
       let popupInfo = 
       `<p>${stop.StationName.Zh_tw}</p>
        <p>可借數量 <span class="number">${stop.AvailableRentBikes}</span></p>
        <p>可停空位 <span class="number">${stop.AvailableReturnBikes}</span></p>`
-      
-      console.log('stop', stop)
-      console.log('stop.AvailableRentBikes', stop.AvailableRentBikes)
-      console.log('stop.AvailableReturnBikes', stop.AvailableReturnBikes)
 
       let marker = new L.marker([stop.StationPosition.PositionLat, stop.StationPosition.PositionLon], {
         icon: new L.DivIcon({
