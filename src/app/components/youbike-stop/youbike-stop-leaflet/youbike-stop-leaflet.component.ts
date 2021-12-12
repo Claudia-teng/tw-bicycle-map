@@ -51,7 +51,7 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
       return;
     }
 
-    this.map?.panTo(new L.LatLng(this.stopResult[0].StationPosition.PositionLat, this.stopResult[0].StationPosition.PositionLon));
+    this.map.setView([this.stopResult[0].StationPosition.PositionLat, this.stopResult[0].StationPosition.PositionLon], 13);
     this.initLayer();
   }
 
