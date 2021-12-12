@@ -97,7 +97,7 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
 
     this.stopResult.forEach(stop => {
       let popupInfo = 
-      `<p>${stop.StationName.Zh_tw}</p>
+      `<p>${stop.StationName.Zh_tw.replace('_', ' ')}</p>
        <p>可借數量 <span class="number">${stop.AvailableRentBikes}</span></p>
        <p>可停空位 <span class="number">${stop.AvailableReturnBikes}</span></p>`
 
