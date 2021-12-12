@@ -10,16 +10,16 @@ export class PlaceService {
     private http: HttpClient,
   ) { }
 
-  public getSpotsByCity(city: string, top?: number, skip?: number): Observable<Array<ScenicSpotTourismInfo>>{
-    return this.http.get<Array<ScenicSpotTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}?$top=30&$skip=30`);
+  public getSpotsByCity(city: string): Observable<Array<ScenicSpotTourismInfo>>{
+    return this.http.get<Array<ScenicSpotTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}`);
   }
 
   public getSpotByName(city: string, name: string): Observable<Array<ScenicSpotTourismInfo>>{
     return this.http.get<Array<ScenicSpotTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}?$filter=contains(Name,'${name}')&$format=JSON`);
   }
 
-  public getRestuarantByCity(city: string, top?: number, skip?: number): Observable<Array<RestaurantTourismInfo>>{
-    return this.http.get<Array<RestaurantTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${city}?$top=30&$skip=30`);
+  public getRestuarantByCity(city: string): Observable<Array<RestaurantTourismInfo>>{
+    return this.http.get<Array<RestaurantTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${city}`);
   }
 
   public getRestuarantByName(city: string, name: string): Observable<Array<RestaurantTourismInfo>>{

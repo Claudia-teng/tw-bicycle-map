@@ -17,8 +17,13 @@ export class PlaceListComponent {
   public isSpot: boolean = true;
   public cities: Array<SelectItem> = placeCityList;
   public selectedCity: SelectItem;
+  public originSpotResults: Array<ScenicSpotTourismInfo>;
+  public originFoodResults: Array<RestaurantTourismInfo>;
   public spotResults: Array<ScenicSpotTourismInfo>;
   public foodResults: Array<RestaurantTourismInfo>;
+
+  // page
+  public pageRow: number = 30;
 
   constructor(private router: Router,
               private placeService: PlaceService) {}
@@ -31,14 +36,16 @@ export class PlaceListComponent {
 
   public findSpotsByCity(): void {
     this.placeService.getSpotsByCity(this.selectedCity.value).subscribe(res => {
-      this.spotResults = res.filter(spot => spot.Picture !== null);
+      this.originSpotResults = res.filter(spot => spot.Picture !== null);
+      this.spotResults = this.originSpotResults.slice(0, 30);
       setTimeout(() => this.loading = false, 800);
     })
   }
 
   public findRestuarantByCity(): void {
     this.placeService.getRestuarantByCity(this.selectedCity.value).subscribe(res => {
-      this.foodResults = res.filter(food => food.Picture !== null);
+      this.originFoodResults = res.filter(food => food.Picture !== null);
+      this.foodResults = this.originFoodResults.slice(0, 30);
       setTimeout(() => this.loading = false, 800);
     })
   }
@@ -66,6 +73,15 @@ export class PlaceListComponent {
         isSpot: this.isSpot
       }
     })
+  }
+
+  public onPageChange(event: any, isSpot: boolean): void {
+    // console.log('event.page', event.page)
+    if (isSpot) {
+      this.spotResults = this.originSpotResults.slice(event.page*30, (event.page+1) * 30);
+    } else {
+      this.foodResults = this.originFoodResults.slice(event.page*30, (event.page+1) * 30);
+    }
   }
 
 }
