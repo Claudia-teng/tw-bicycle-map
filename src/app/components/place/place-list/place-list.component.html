@@ -17,14 +17,7 @@
       <p>美 食</p>
     </div>
   </button>
-  <div class="dropdown">
-    <p-dropdown [options]="cities" 
-                [(ngModel)]="selectedCity" 
-                scrollHeight="250px"
-                optionLabel="label"
-                (onChange)="onCityChange()">
-    </p-dropdown>
-  </div>
+  <div></div>
 </div>
 
 <ng-container *ngIf="loading; else showResult">
@@ -41,37 +34,37 @@
           <img [src]="spot.Picture.PictureUrl1">
           <div>
             <p>{{ spot.Name }}</p>
-            <!-- <p>
+            <p>
               <img src="assets/phone-icon.png" />
               {{ spot.Phone }}
-            </p> -->
+            </p>
           </div>
         </div>
-        <div class="paginator">
+        <!-- <div class="paginator">
           <p-paginator [rows]="30"
-                        [totalRecords]="originSpotResults.length"
+                        [totalRecords]="originSpotResults?.length"
                         [pageLinkSize]="3"
                         (onPageChange)="onPageChange($event, true)">
           </p-paginator>
-        </div>
+        </div> -->
       </ng-container>
       <ng-container *ngIf="!isSpot">
         <div class="card" *ngFor="let food of foodResults" (click)="navigateToPlaceDetail(food)">
           <img [src]="food.Picture.PictureUrl1">
           <div>
             <p>{{ food.Name }}</p>
-            <!-- <p>
+            <p>
               <img src="assets/phone-icon.png" />
               {{ food.Phone }}
-            </p> -->
+            </p>
           </div>
         </div>
-        <div class="paginator">
+        <!-- <div class="paginator">
           <p-paginator [rows]="30"
-                        [totalRecords]="originFoodResults.length"
+                        [totalRecords]="originFoodResults?.length"
                         (onPageChange)="onPageChange($event, false)">
           </p-paginator>
-        </div>
+        </div> -->
       </ng-container>
     </div>
   </div>

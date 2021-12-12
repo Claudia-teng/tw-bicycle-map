@@ -66,39 +66,6 @@
       .cover 
         left: 50%
 
-  .dropdown
-    display: flex
-    justify-content: flex-end
-    padding-right: 2rem
-  ::ng-deep 
-    .p-dropdown
-      background-color: black
-      border-radius: 50px
-      border: none
-      width: 10rem
-      height: 2.5rem
-      display: flex
-      align-items: center
-      &.p-focus
-        box-shadow: none
-    .p-dropdown-label
-      color: white
-      margin-left: 2rem
-    .p-dropdown-trigger
-      color: white
-    .p-dropdown-panel
-      border-radius: 15px
-    .p-dropdown-items-wrapper
-      background-color: black
-      border-radius: 15px
-      &::-webkit-scrollbar
-        display: none
-    .p-dropdown-item
-      color: white
-      &:hover, &.p-highlight
-        background-color: var(--yellow) !important
-        color: black !important
-
 .loading
   text-align: center
   img
@@ -149,6 +116,11 @@
   justify-content: center
   width: 100%
 
+::ng-deep
+  .p-paginator-page.p-highlight
+    background: var(--yellow) !important
+    border-radius: 50px
+
 .footer
   display: none
 
@@ -164,9 +136,15 @@
       width: 20%
   .result
     height: 84%
+
+  .card-area
+    padding: 0rem 1.5rem
   
   .card
     width: calc((100% - 1rem * 4) / 2)
+    > div
+      p:nth-child(2)
+        font-size: .8rem
 
   .footer
     height: 8%
@@ -217,6 +195,9 @@
   .card
     width: 100%
     margin: .5rem 0rem
+    > div
+      p:nth-child(2)
+        font-size: .9rem
   
   .footer
     height: 8%

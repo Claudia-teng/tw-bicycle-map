@@ -14,7 +14,7 @@ export class PlaceDetailComponent {
   public loading: boolean;
 
   public city: string;
-  public isSpot: boolean;
+  public isSpot: boolean = false;
   public placeName: string;
   public spotDetail: ScenicSpotTourismInfo;
   public foodDetail: RestaurantTourismInfo;
@@ -28,8 +28,7 @@ export class PlaceDetailComponent {
     this.route.queryParams.subscribe(
       (params: Params) => {
         this.placeName = params.placeName;
-        this.city = params.city;
-        this.isSpot = params.isSpot;
+        this.isSpot = params.isSpot === 'Y' ? true : false;
         this.queryPlaceDetail();
       }
     );
@@ -51,12 +50,12 @@ export class PlaceDetailComponent {
 
   public queryPlaceDetail(): void {
     if (this.isSpot) {
-      this.placeService.getSpotByName(this.city, this.placeName).subscribe(res => {
+      this.placeService.getSpotByName(this.placeName).subscribe(res => {
         this.spotDetail = res[0];
         setTimeout(() => this.loading = false, 800);
       });
     } else {
-      this.placeService.getRestuarantByName(this.city, this.placeName).subscribe(res => {
+      this.placeService.getRestuarantByName(this.placeName).subscribe(res => {
         this.foodDetail = res[0];
         setTimeout(() => this.loading = false, 800);
       });

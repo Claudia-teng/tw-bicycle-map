@@ -53,7 +53,11 @@ export class PlaceMapComponent {
   }
 
   public initLayer(): void {
-    L.marker([this.locationLat, this.locationLon]).addTo(this.map);
+    L.marker([this.locationLat, this.locationLon], {
+      icon: new L.DivIcon({
+        html: `<img width="50" src="assets/location-pin.png"/>`
+      })
+    }).addTo(this.map);
   }
 
   public navigateToPlaceDetail(): void {
