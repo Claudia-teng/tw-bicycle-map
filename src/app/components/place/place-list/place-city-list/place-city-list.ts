@@ -1,53 +1,6 @@
 import { SelectItem } from "primeng/api";
 
-export const youbikeCityList: Array<SelectItem> = [
-  {
-    label: "台北市",
-    value: "Taipei"
-  },
-  {
-    label: "新北市",
-    value: "NewTaipei"
-  },
-  {
-    label: "桃園市",
-    value: "Taoyuan"
-  },
-  {
-    label: "新竹市",
-    value: "Hsinchu"
-  },
-  {
-    label: "苗栗縣",
-    value: "MiaoliCounty"
-  },
-  {
-    label: "台中市",
-    value: "Taichung"
-  },
-  {
-    label: "嘉義市",
-    value: "Chiayi"
-  },
-  {
-    label: "台南市",
-    value: "Tainan"
-  },
-  {
-    label: "高雄市",
-    value: "Kaohsiung"
-  },
-  {
-    label: "屏東縣",
-    value: "PingtungCounty"
-  },
-  {
-    label: "金門縣",
-    value: "KinmenCounty"
-  },
-];
-
-export const laneCityList: Array<SelectItem> = [
+export const placeCityList: Array<SelectItem> = [
   {
     label: "台北市",
     value: "Taipei"
@@ -63,6 +16,10 @@ export const laneCityList: Array<SelectItem> = [
   {
     label: "桃園市",
     value: "Taoyuan"
+  },
+  {
+    label: "新竹市",
+    value: "Hsinchu"
   },
   {
     label: "新竹縣",
@@ -109,16 +66,16 @@ export const laneCityList: Array<SelectItem> = [
     value: "PingtungCounty"
   },
   {
-    label: "宜蘭縣",
-    value: "YilanCounty"
+    label: "台東縣",
+    value: "TaitungCounty"
   },
   {
     label: "花蓮縣",
     value: "HualienCounty"
   },
   {
-    label: "臺東縣",
-    value: "TaitungCounty"
+    label: "宜蘭縣",
+    value: "YilanCounty"
   },
   {
     label: "澎湖縣",
@@ -127,5 +84,9 @@ export const laneCityList: Array<SelectItem> = [
   {
     label: "金門縣",
     value: "KinmenCounty"
+  },
+  {
+    label: "連江縣",
+    value: "LienchiangCounty"
   }
 ]

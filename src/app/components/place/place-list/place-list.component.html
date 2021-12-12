@@ -3,7 +3,7 @@
     <img (click)="navigateToIndex()" src="assets/back-arrow.png"/>
   </div>
   <button (click)="onToggleView()" [ngClass]="isSpot ? 'is-spot': 'is-food'">
-    <div class="spot active">
+    <div class="spot">
       <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7313 5.23331C14.9112 5.03723 15.06 4.875 15.375 4.875C15.7731 4.875 16.0385 5.13409 16.3038 5.39318L23.8673 17.7C24 17.9591 24 17.9591 24 18.2182C24 18.8659 23.6019 19.125 23.0712 19.125H13.0635H7.67885H1.68654C1.39231 19.125 1 18.9341 1 18.4568C1 18.3614 1 18.1705 1.09808 18.075L6.78654 9.00682C6.82748 8.96697 6.86415 8.92713 6.89922 8.88902C7.03218 8.74454 7.14218 8.625 7.375 8.625C7.66923 8.625 7.86538 8.81591 8.06154 9.00682L10.1751 12.4352L14.5788 5.39318C14.6342 5.33911 14.6838 5.28503 14.7313 5.23331ZM11.1047 13.9432L10.9857 13.7501L15.375 6.81818L19.7538 13.9432H18.6923L16.7019 12L15.375 13.9432L14.0481 12L12.0577 13.9432H11.1047ZM9.50339 13.5093L7.375 10.0568L4.04038 15.3068H4.92308L6.39423 13.875L7.375 15.3068L8.35577 13.875L8.92701 14.431L9.50339 13.5093Z" fill="black"/>
       </svg>
@@ -17,5 +17,52 @@
       <p>美 食</p>
     </div>
   </button>
-  <div></div>
+  <div class="dropdown">
+    <p-dropdown [options]="cities" 
+                [(ngModel)]="selectedCity" 
+                scrollHeight="250px"
+                optionLabel="label"
+                (onChange)="onCityChange()">
+    </p-dropdown>
+  </div>
 </div>
+
+<ng-container *ngIf="loading; else showResult">
+  <div class="loading">
+    <img src="assets/loading.gif"/>
+  </div>
+</ng-container>
+
+<ng-template #showResult>
+  <div class="result">
+    <div class="card-area">
+      <ng-container *ngIf="isSpot">
+        <div class="card" *ngFor="let spot of spotResults" (click)="navigateToPlaceDetail(spot)">
+          <img [src]="spot.Picture.PictureUrl1">
+          <div>
+            <p>{{ spot.Name }}</p>
+            <p>
+              <img src="assets/phone-icon.png" />
+              {{ spot.Phone }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isSpot">
+        <div class="card" *ngFor="let food of foodResults" (click)="navigateToPlaceDetail(food)">
+          <img [src]="food.Picture.PictureUrl1">
+          <div>
+            <p>{{ food.Name }}</p>
+            <p>
+              <img src="assets/phone-icon.png" />
+              {{ food.Phone }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+      <div class="paginator">
+        <p-paginator></p-paginator>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -14,10 +14,6 @@ export class BicycleLaneLeafletComponent implements AfterViewInit {
 
   constructor() { }
 
-  ngOnChanges() {
-    console.log('polyLineLocation', this.polyLineLocation)
-  }
-
   ngAfterViewInit(): void {
     this.initMap();
   }

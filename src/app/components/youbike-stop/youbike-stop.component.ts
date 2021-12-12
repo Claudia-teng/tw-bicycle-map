@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeStation } from 'src/app/model';
 import { YoubikeStopService } from 'src/app/service';
-import { youbikeCityList } from '../shared/city-list/city-list';
+import { youbikeCityList } from './youbike-city-list/youbike-city-list';
 
 @Component({
   selector: 'youbike-stop',

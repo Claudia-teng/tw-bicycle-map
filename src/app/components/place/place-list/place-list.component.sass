@@ -7,6 +7,7 @@
   align-items: center
   > div
     flex: 1
+
   .logo
     padding-left: 2rem
     img
@@ -43,18 +44,18 @@
       border-radius: 50px
       transition: .5s
     &.is-spot
-      .rent
+      .spot
         svg path, p
           color: var(--yellow)
           fill: var(--yellow)
-        .park
-          svg path, p
-            color: var(--black)
-            fill: var(--black)
+      .food
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
       .cover
         left: 0%
     &.is-food
-      .rent
+      .spot
         svg path, p
           color: var(--black)
           fill: var(--black)
@@ -62,13 +63,107 @@
         svg rect, p
           color: var(--yellow)
           fill: var(--yellow)
-        svg path
-          fill: var(--black)
       .cover 
         left: 50%
+
+  .dropdown
+    display: flex
+    justify-content: flex-end
+    padding-right: 2rem
+  ::ng-deep 
+    .p-dropdown
+      background-color: black
+      border-radius: 50px
+      border: none
+      width: 10rem
+      height: 2.5rem
+      display: flex
+      align-items: center
+      &.p-focus
+        box-shadow: none
+    .p-dropdown-label
+      color: white
+      margin-left: 2rem
+    .p-dropdown-trigger
+      color: white
+    .p-dropdown-panel
+      border-radius: 15px
+    .p-dropdown-items-wrapper
+      background-color: black
+      border-radius: 15px
+      &::-webkit-scrollbar
+        display: none
+    .p-dropdown-item
+      color: white
+      &:hover, &.p-highlight
+        background-color: var(--yellow) !important
+        color: black !important
 
 .loading
   text-align: center
   margin-top: 1rem
   img
     width: 8%
+
+.result
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 90%
+.card-area
+  max-width: 1600px
+  padding: 0rem 3rem
+  display: flex
+  flex-wrap: wrap
+  height: 90%
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    display: none
+.card
+  width: calc((100% - 1rem * 6) / 3)
+  height: 10rem
+  padding: 1rem
+  margin: 1rem
+  background-color: var(--white)
+  border-radius: 6px
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  transition: .5s
+  display: flex
+  > img
+    width: 10rem
+    margin-right: 1rem
+    border-radius: 6px
+  > div
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    p img
+      margin-right: .5rem
+  &:hover
+    background-color: var(--black)
+    p
+      color: var(--yellow)
+
+.paginator
+  display: flex
+  justify-content: center
+  width: 100%
+
+@include breakpoint(pad)
+  .loading
+    img
+      width: 20%
+  
+  .card
+    width: calc((100% - 1rem * 4) / 2)
+
+@include breakpoint(phone)
+  .loading
+    img
+      width: 20%
+
+  .card
+    width: 100%
+    margin: .5rem 0rem
+

@@ -12,7 +12,7 @@ export interface ScenicSpotTourismInfo {
   ZipCode?: string,
   TravelInfo?: string,
   OpenTime?: string,
-  Picture?: TourismPicture ,
+  Picture?: TourismPicture,
   MapUrl?: string,
   Position?: PointType,
   Class1?: string,

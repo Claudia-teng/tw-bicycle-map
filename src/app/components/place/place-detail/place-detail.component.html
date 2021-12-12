@@ -1,0 +1,63 @@
+<div class="topbar">
+  <div class="logo">
+    <img (click)="navigateToPlaceList()" src="assets/back-arrow.png"/>
+  </div>
+  <div class="name">
+    <p>{{ this.placeName }}</p>
+  </div>
+</div>
+
+<ng-container *ngIf="loading; else showResult">
+  <div class="loading">
+    <img src="assets/loading.gif"/>
+  </div>
+</ng-container>
+
+<ng-template #showResult>
+  <div class="container">
+    <ng-container *ngIf="isSpot">
+      <div class="content">
+        <div class="image">
+          <img [src]="spotDetail?.Picture.PictureUrl1">
+        </div>
+        <div>
+          <img src="assets/time-icon.png" />
+          <span>{{ spotDetail?.OpenTime ? spotDetail.OpenTime : '無開放時間資訊'}}</span>
+        </div>
+        <div>
+          <img src="assets/tel-icon.png" />
+          <span>{{ spotDetail?.Phone }}</span>
+        </div>
+        <div>
+          <img src="assets/card-marker.png" />
+          <span>{{ spotDetail?.Address}}</span>
+          <div class="map-btn" (click)="navigateToPlaceMap()">
+            點我看地圖
+          </div>
+        </div>
+        <p>{{ spotDetail?.DescriptionDetail}}</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!isSpot">
+      <div class="content">
+        <div class="image">
+          <img [src]="foodDetail?.Picture.PictureUrl1">
+        </div>
+        <div>
+          <img src="assets/time-icon.png" />
+          <span>{{ foodDetail?.OpenTime ? foodDetail.OpenTime : '無開放時間資訊'}}</span>
+        </div>
+        <div>
+          <img src="assets/tel-icon.png" />
+          <span>{{ foodDetail?.Phone }}</span>
+        </div>
+        <div>
+          <img src="assets/card-marker.png" />
+          <span>{{ foodDetail?.Address}}</span>
+          <div class="map-btn">點我看地圖</div>
+        </div>
+        <p>{{ foodDetail?.Description}}</p>
+      </div>
+  </ng-container>
+  </div>
+</ng-template>

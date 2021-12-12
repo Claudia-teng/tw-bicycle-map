@@ -12,13 +12,6 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth.intercepter.service';
 import { IndexComponent } from './components/index/index.component';
 import { BicycleLaneListComponent } from './components/bicycle-lane/bicycle-lane-list/bicycle-lane-list.component';
-
-// PrimeNG
-import { GMapModule } from 'primeng/gmap';
-import { DropdownModule } from 'primeng/dropdown';
-
-// Lottie
-import { LottieModule } from 'ngx-lottie';
 import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
 import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
 import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-leaflet/youbike-stop-leaflet.component';
@@ -26,6 +19,14 @@ import { BicycleLaneLeafletComponent } from './components/bicycle-lane/bicycle-l
 import { PlaceListComponent } from './components/place/place-list/place-list.component';
 import { PlaceDetailComponent } from './components/place/place-detail/place-detail.component';
 import { PlaceMapComponent } from './components/place/place-map/place-map.component';
+
+// PrimeNG
+import { GMapModule } from 'primeng/gmap';
+import { DropdownModule } from 'primeng/dropdown';
+import { PaginatorModule } from 'primeng/paginator';
+
+// Lottie
+import { LottieModule } from 'ngx-lottie';
 
 
 export function playerFactory() { 
@@ -52,6 +53,7 @@ export function playerFactory() {
     FormsModule,
     GMapModule,
     DropdownModule,
+    PaginatorModule,
     LottieModule.forRoot({ player: playerFactory }),
     RouterModule.forRoot(appRoutes)
   ],

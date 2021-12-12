@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeShape } from 'src/app/model';
 import { BicycleLaneService } from 'src/app/service';
-import { laneCityList } from '../../shared/city-list/city-list';
+import { laneCityList } from './lane-city-list/lane-city-list';
 
 @Component({
   selector: 'bicycle-lane-list',

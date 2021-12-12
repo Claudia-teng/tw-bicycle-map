@@ -7,8 +7,7 @@ import { BicycleLaneService } from 'src/app/service';
 @Component({
   selector: 'bicycle-lane-map',
   templateUrl: './bicycle-lane-map.component.html',
-  styleUrls: ['./bicycle-lane-map.component.sass'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./bicycle-lane-map.component.sass']
 })
 export class BicycleLaneMapComponent {
 
