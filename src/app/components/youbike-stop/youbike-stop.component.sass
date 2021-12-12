@@ -147,6 +147,7 @@
     height: 8%
     button
       display: none
+
   .footer
     height: 8%
     background-color: var(--yellow)
@@ -180,8 +181,8 @@
       width: 20%
   .map
     height: 84%
-    img
-      right: 8%
+    .search-bar
+      left: calc((100% - 576px) / 2)
 
 @include breakpoint(phone)
   .topbar
@@ -221,12 +222,10 @@
       width: 20%
   .map
     height: 84%
-    img
-      right: 15%
     .search-bar
-      left: calc((100% - 320px) / 2)
+      left: calc((100% - 270px) / 2)
       input
-        width: 9rem
+        width: 7rem
 
 ::ng-deep
   .p-dropdown

@@ -11,6 +11,8 @@ import * as L from 'leaflet';
 })
 export class PlaceMapComponent {
 
+  public loading: boolean;
+
   public placeName: string;
   public locationLat: number;
   public locationLon: number;
@@ -51,7 +53,7 @@ export class PlaceMapComponent {
   }
 
   public initLayer(): void {
-    L.marker([this.locationLat, this.locationLon]).addTo(this.map)
+    L.marker([this.locationLat, this.locationLon]).addTo(this.map);
   }
 
   public navigateToPlaceDetail(): void {

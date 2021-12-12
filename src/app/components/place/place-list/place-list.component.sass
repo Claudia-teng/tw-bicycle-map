@@ -101,7 +101,6 @@
 
 .loading
   text-align: center
-  margin-top: 1rem
   img
     width: 8%
 
@@ -150,20 +149,98 @@
   justify-content: center
   width: 100%
 
+.footer
+  display: none
+
 @include breakpoint(pad)
+  .topbar
+    height: 8%
+    button
+      display: none
+  
   .loading
+    height: 84%
     img
       width: 20%
+  .result
+    height: 84%
   
   .card
     width: calc((100% - 1rem * 4) / 2)
 
+  .footer
+    height: 8%
+    background-color: var(--yellow)
+    display: flex
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1
+      transition: .5s
+      p
+        margin-left: .5rem
+    .spot
+      svg path, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+    .food
+      svg path, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+
 @include breakpoint(phone)
+  .topbar
+    height: 8%
+    button
+      display: none
+
   .loading
+    height: 84%
     img
       width: 20%
+
+  .result
+    height: 84%
 
   .card
     width: 100%
     margin: .5rem 0rem
+  
+  .footer
+    height: 8%
+    background-color: var(--yellow)
+    display: flex
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1
+      transition: .5s
+      p
+        margin-left: .5rem
+    .spot
+      svg path, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
+    .food
+      svg path, p
+        color: var(--white)
+        fill: var(--white)
+      &.active
+        svg path, p
+          color: var(--black)
+          fill: var(--black)
 
