@@ -5,11 +5,11 @@ import * as L from 'leaflet';
 
 
 @Component({
-  selector: 'place-map',
-  templateUrl: './place-map.component.html',
-  styleUrls: ['./place-map.component.sass']
+  selector: 'nearby-place-map',
+  templateUrl: './nearby-place-map.component.html',
+  styleUrls: ['./nearby-place-map.component.sass']
 })
-export class PlaceMapComponent {
+export class NearbyPlaceMapComponent {
 
   public loading: boolean;
 

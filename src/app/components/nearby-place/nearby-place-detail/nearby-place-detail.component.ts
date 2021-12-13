@@ -5,11 +5,11 @@ import { PlaceService } from 'src/app/service';
 
 
 @Component({
-  selector: 'place-detail',
-  templateUrl: './place-detail.component.html',
-  styleUrls: ['./place-detail.component.sass']
+  selector: 'nearby-place-detail',
+  templateUrl: './nearby-place-detail.component.html',
+  styleUrls: ['./nearby-place-detail.component.sass']
 })
-export class PlaceDetailComponent {
+export class NearbyPlaceDetailComponent {
 
   public loading: boolean;
 
@@ -35,11 +35,11 @@ export class PlaceDetailComponent {
   }
 
   public navigateToPlaceList(): void {
-    this.router.navigate(['place-list']);
+    this.router.navigate(['nearby-place-list']);
   }
 
   public navigateToPlaceMap(): void {
-    this.router.navigate(['place-map'], {
+    this.router.navigate(['nearby-place-map'], {
       queryParams: {
         placeName: this.isSpot ? this.spotDetail.Name : this.foodDetail.Name,
         locationLat: this.isSpot ? this.spotDetail.Position.PositionLat : this.foodDetail.Position.PositionLat,

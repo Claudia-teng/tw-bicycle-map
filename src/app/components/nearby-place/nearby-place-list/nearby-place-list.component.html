@@ -40,13 +40,6 @@
             </p>
           </div>
         </div>
-        <!-- <div class="paginator">
-          <p-paginator [rows]="30"
-                        [totalRecords]="originSpotResults?.length"
-                        [pageLinkSize]="3"
-                        (onPageChange)="onPageChange($event, true)">
-          </p-paginator>
-        </div> -->
       </ng-container>
       <ng-container *ngIf="!isSpot">
         <div class="card" *ngFor="let food of foodResults" (click)="navigateToPlaceDetail(food)">
@@ -59,12 +52,11 @@
             </p>
           </div>
         </div>
-        <!-- <div class="paginator">
-          <p-paginator [rows]="30"
-                        [totalRecords]="originFoodResults?.length"
-                        (onPageChange)="onPageChange($event, false)">
-          </p-paginator>
-        </div> -->
+      </ng-container>
+      <ng-container *ngIf="spotResults?.length === 0 || foodResults?.length === 0">
+        <div class="loading">
+          <p>無搜尋結果</p>
+        </div>
       </ng-container>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeShape } from 'src/app/model';
 import { BicycleLaneService } from 'src/app/service';
-import { laneCityList } from './lane-city-list/lane-city-list';
+import { bicycleLaneCities } from './bicycle-lane-cities/bicycle-lane-cities';
 
 @Component({
   selector: 'bicycle-lane-list',
@@ -13,7 +13,7 @@ import { laneCityList } from './lane-city-list/lane-city-list';
 export class BicycleLaneListComponent {
 
   public loading: boolean;
-  public cities: Array<SelectItem> = laneCityList;
+  public cities: Array<SelectItem> = bicycleLaneCities;
   public selectedCity: SelectItem;
   public laneResult: Array<BikeShape>;
   

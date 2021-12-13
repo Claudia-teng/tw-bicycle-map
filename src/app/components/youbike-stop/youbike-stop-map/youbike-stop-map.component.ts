@@ -3,18 +3,18 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { BikeStation } from 'src/app/model';
 import { YoubikeStopService } from 'src/app/service';
-import { youbikeCityList } from './youbike-city-list/youbike-city-list';
+import { youbikeCities } from '../youbike-cities/youbike-cities';
 
 @Component({
-  selector: 'youbike-stop',
-  templateUrl: './youbike-stop.component.html',
-  styleUrls: ['./youbike-stop.component.sass']
+  selector: 'youbike-stop-map',
+  templateUrl: './youbike-stop-map.component.html',
+  styleUrls: ['./youbike-stop-map.component.sass']
 })
 
-export class YoubikeStopComponent {
+export class YoubikeStopMapComponent {
   public loading: boolean = true;
 
-  public cities: Array<SelectItem> = youbikeCityList;
+  public cities: Array<SelectItem> = youbikeCities;
   public selectedCity: SelectItem;
   public inputSearch: string;
 
@@ -82,12 +82,12 @@ export class YoubikeStopComponent {
   public findNearbyStation(): void {
     this.youbikeStopService.getNearbyStop(this.currentLat, this.currentLng).subscribe(res => {
       this.stopResult = res;
-      this.bindNaerbyStationAvailablilty();
+      this.bindNearbyStationAvailablilty();
     })
 
   }
 
-  public bindNaerbyStationAvailablilty(): void {
+  public bindNearbyStationAvailablilty(): void {
     this.youbikeStopService.getNearbyAvailability(this.currentLat, this.currentLng).subscribe(res => {
       this.stopResult.map(stop => {
         res.forEach(availabilityStop => {

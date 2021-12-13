@@ -12,13 +12,13 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth.intercepter.service';
 import { IndexComponent } from './components/index/index.component';
 import { BicycleLaneListComponent } from './components/bicycle-lane/bicycle-lane-list/bicycle-lane-list.component';
-import { YoubikeStopComponent } from './components/youbike-stop/youbike-stop.component';
-import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
-import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-leaflet/youbike-stop-leaflet.component';
 import { BicycleLaneLeafletComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-leaflet/bicycle-lane-leaflet.component';
-import { PlaceListComponent } from './components/place/place-list/place-list.component';
-import { PlaceDetailComponent } from './components/place/place-detail/place-detail.component';
-import { PlaceMapComponent } from './components/place/place-map/place-map.component';
+import { BicycleLaneMapComponent } from './components/bicycle-lane/bicycle-lane-map/bicycle-lane-map.component';
+import { YoubikeStopLeafletComponent } from './components/youbike-stop/youbike-stop-map/youbike-stop-leaflet/youbike-stop-leaflet.component';
+import { YoubikeStopMapComponent } from './components/youbike-stop/youbike-stop-map/youbike-stop-map.component';
+import { NearbyPlaceDetailComponent } from './components/nearby-place/nearby-place-detail/nearby-place-detail.component';
+import { NearbyPlaceMapComponent } from './components/nearby-place/nearby-place-map/nearby-place-map.component';
+import { NearbyPlaceListComponent } from './components/nearby-place/nearby-place-list/nearby-place-list.component';
 
 // PrimeNG
 import { GMapModule } from 'primeng/gmap';
@@ -29,6 +29,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { LottieModule } from 'ngx-lottie';
 
 
+
 export function playerFactory() { 
   return import('lottie-web'); 
 } 
@@ -37,14 +38,14 @@ export function playerFactory() {
   declarations: [
     AppComponent,
     IndexComponent,
-    YoubikeStopComponent,
+    YoubikeStopMapComponent,
     BicycleLaneListComponent,
     BicycleLaneMapComponent,
     YoubikeStopLeafletComponent,
     BicycleLaneLeafletComponent,
-    PlaceListComponent,
-    PlaceDetailComponent,
-    PlaceMapComponent
+    NearbyPlaceListComponent,
+    NearbyPlaceDetailComponent,
+    NearbyPlaceMapComponent
   ],
   imports: [
     BrowserModule,

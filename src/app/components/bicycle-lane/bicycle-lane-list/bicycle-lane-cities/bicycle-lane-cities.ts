@@ -1,6 +1,6 @@
 import { SelectItem } from "primeng/api";
 
-export const placeCityList: Array<SelectItem> = [
+export const bicycleLaneCities: Array<SelectItem> = [
   {
     label: "台北市",
     value: "Taipei"
@@ -16,10 +16,6 @@ export const placeCityList: Array<SelectItem> = [
   {
     label: "桃園市",
     value: "Taoyuan"
-  },
-  {
-    label: "新竹市",
-    value: "Hsinchu"
   },
   {
     label: "新竹縣",
@@ -66,16 +62,16 @@ export const placeCityList: Array<SelectItem> = [
     value: "PingtungCounty"
   },
   {
-    label: "台東縣",
-    value: "TaitungCounty"
+    label: "宜蘭縣",
+    value: "YilanCounty"
   },
   {
     label: "花蓮縣",
     value: "HualienCounty"
   },
   {
-    label: "宜蘭縣",
-    value: "YilanCounty"
+    label: "臺東縣",
+    value: "TaitungCounty"
   },
   {
     label: "澎湖縣",
@@ -84,9 +80,5 @@ export const placeCityList: Array<SelectItem> = [
   {
     label: "金門縣",
     value: "KinmenCounty"
-  },
-  {
-    label: "連江縣",
-    value: "LienchiangCounty"
   }
-]
+];

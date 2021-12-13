@@ -1,6 +1,6 @@
 import { SelectItem } from "primeng/api";
 
-export const youbikeCityList: Array<SelectItem> = [
+export const youbikeCities: Array<SelectItem> = [
   {
     label: "台北市",
     value: "Taipei"
