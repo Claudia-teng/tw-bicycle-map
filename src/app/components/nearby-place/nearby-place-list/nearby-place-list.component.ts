@@ -43,7 +43,6 @@ export class NearbyPlaceListComponent {
     this.placeService.getSpotsByCity(this.currentLat, this.currentLon).subscribe(res => {
       this.spotResults = res.filter(spot => spot.Picture !== null);
       this.spotResults.map(spot => {
-        spot.Name.replace(/_/g, ' ');
         spot.Phone = spot.Phone.slice(0, 14)
       })
       setTimeout(() => this.loading = false, 800);
@@ -67,7 +66,6 @@ export class NearbyPlaceListComponent {
       this.foodResults = res.filter(food => food.Picture !== null);
       this.foodResults.map(food => {
         food.Phone = food.Phone.slice(0, 14);
-        food.Name.replace(/_/g, ' ');
       })
       setTimeout(() => this.loading = false, 800);
     }) 

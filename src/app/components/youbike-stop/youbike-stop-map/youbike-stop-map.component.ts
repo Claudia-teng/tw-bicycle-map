@@ -24,6 +24,7 @@ export class YoubikeStopMapComponent {
   public isRent: boolean = true;
   public isFindNearby: boolean;
   public userLocation: Array<any>;
+  public locating: boolean = false;
 
   public stopResult: Array<BikeStation>;
   public stopMapResult: Array<BikeStation>;
@@ -71,6 +72,7 @@ export class YoubikeStopMapComponent {
 
   public findCurrentPosition(): void {
     this.isFindNearby = true;
+    this.locating = true;
     navigator.geolocation.getCurrentPosition((position) => {
       this.userLocation = [position.coords.latitude, position.coords.longitude];
       this.currentLat = position.coords.latitude;
@@ -98,7 +100,7 @@ export class YoubikeStopMapComponent {
         })
       });
       this.stopMapResult = this.stopResult;
-      this.loading = false;
+      this.locating = false;
     })
   }
 }
