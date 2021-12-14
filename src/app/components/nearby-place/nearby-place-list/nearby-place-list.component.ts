@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { RestaurantTourismInfo, ScenicSpotTourismInfo } from 'src/app/model';
-import { PlaceService } from 'src/app/service';
+import { NearbyPlaceService } from 'src/app/service';
 import { nearbyPlaceCities } from './nearby-place-cities/nearby-place-cities';
 
 
@@ -26,7 +26,7 @@ export class NearbyPlaceListComponent {
   public currentLon: number;
 
   constructor(private router: Router,
-              private placeService: PlaceService) {}
+              private nearbyPlaceService: NearbyPlaceService) {}
 
   ngOnInit() {
     // this.selectedCity = this.cities[0];
@@ -40,7 +40,7 @@ export class NearbyPlaceListComponent {
   }
 
   public findNearbySpots(): void {
-    this.placeService.getSpotsByCity(this.currentLat, this.currentLon).subscribe(res => {
+    this.nearbyPlaceService.getSpotsByCity(this.currentLat, this.currentLon).subscribe(res => {
       this.spotResults = res.filter(spot => spot.Picture !== null);
       this.spotResults.map(spot => {
         spot.Phone = spot.Phone.slice(0, 14)
@@ -62,7 +62,7 @@ export class NearbyPlaceListComponent {
   }
 
   public findNearbyRestuarant(): void {
-    this.placeService.getRestuarantByCity(this.currentLat, this.currentLon).subscribe(res => {
+    this.nearbyPlaceService.getRestuarantByCity(this.currentLat, this.currentLon).subscribe(res => {
       this.foodResults = res.filter(food => food.Picture !== null);
       this.foodResults.map(food => {
         food.Phone = food.Phone.slice(0, 14);

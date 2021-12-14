@@ -47,16 +47,17 @@
 
 .result
   display: flex
-  align-items: center
   justify-content: center
   height: 90%
+  padding: 1rem
 
 .card-area
   max-width: 1400px
+  height: fit-content
+  max-height: 100%
   padding: 0rem 3rem
   display: flex
   flex-wrap: wrap
-  height: 90%
   overflow-y: scroll
   &::-webkit-scrollbar
     display: none
@@ -98,7 +99,10 @@
   .loading
     img
       width: 20%
-  
+
+  .card-area
+    padding: 0rem 1.5rem
+
   .card
     width: calc((100% - 1rem * 4) / 2)
 
@@ -107,6 +111,9 @@
     img
       width: 20%
 
+  .card-area
+    padding: 0rem 1rem
+    
   .card
     width: 100%
     margin: .5rem 0rem

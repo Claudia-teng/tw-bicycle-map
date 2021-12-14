@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RestaurantTourismInfo, ScenicSpotTourismInfo } from 'src/app/model';
-import { PlaceService } from 'src/app/service';
+import { NearbyPlaceService } from 'src/app/service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class NearbyPlaceDetailComponent {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private placeService: PlaceService) {}
+              private nearbyPlaceService: NearbyPlaceService) {}
 
   ngOnInit() {
     this.loading = true;
@@ -50,12 +50,12 @@ export class NearbyPlaceDetailComponent {
 
   public queryPlaceDetail(): void {
     if (this.isSpot) {
-      this.placeService.getSpotByName(this.placeName).subscribe(res => {
+      this.nearbyPlaceService.getSpotByName(this.placeName).subscribe(res => {
         this.spotDetail = res[0];
         setTimeout(() => this.loading = false, 800);
       });
     } else {
-      this.placeService.getRestuarantByName(this.placeName).subscribe(res => {
+      this.nearbyPlaceService.getRestuarantByName(this.placeName).subscribe(res => {
         this.foodDetail = res[0];
         setTimeout(() => this.loading = false, 800);
       });
