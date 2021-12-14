@@ -20,7 +20,6 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes', changes)
     if (changes.isRent?.previousValue !== changes.isRent?.currentValue) {
       this.initLayer();
       return;

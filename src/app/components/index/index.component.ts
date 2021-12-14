@@ -18,7 +18,7 @@ export class IndexComponent {
   };
 
   public animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+    // console.log(animationItem);
   }
 
   public navigateTo(page: string): void {

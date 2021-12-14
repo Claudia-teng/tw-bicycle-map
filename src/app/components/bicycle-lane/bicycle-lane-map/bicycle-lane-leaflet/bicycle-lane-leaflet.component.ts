@@ -51,7 +51,7 @@ export class BicycleLaneLeafletComponent implements AfterViewInit {
       })
     }).addTo(this.map)
 
-    console.log('line', this.polyLineLocation)
+    // console.log('line', this.polyLineLocation)
     L.polyline(this.polyLineLocation, {
       color: '#000000',
       weight: 5,
