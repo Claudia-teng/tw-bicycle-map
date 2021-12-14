@@ -11,11 +11,11 @@ export class YoubikeStopService {
   ) { }
 
   public getNearbyStop(lat: number, lon: number): Observable<Array<BikeStation>>{
-    return this.http.get<Array<BikeStation>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 500)&$format=JSON`);
+    return this.http.get<Array<BikeStation>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 700)&$format=JSON`);
   }
 
   public getNearbyAvailability(lat: number, lon: number): Observable<Array<BikeAvailability>>{
-    return this.http.get<Array<BikeAvailability>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 500)&$format=JSON`);
+    return this.http.get<Array<BikeAvailability>>(`https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NearBy?$spatialFilter=nearby(${lat}, ${lon}, 700)&$format=JSON`);
   }
 
   public getStationByCity(city: string, input?: string): Observable<Array<BikeStation>>{
