@@ -53,7 +53,7 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="spotResults?.length === 0 || foodResults?.length === 0">
+      <ng-container *ngIf="isSpot && spotResults?.length === 0 || !isSpot && foodResults?.length === 0">
         <div class="no-result">
           <p>無搜尋結果</p>
         </div>
