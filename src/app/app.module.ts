@@ -21,9 +21,7 @@ import { NearbyPlaceMapComponent } from './components/nearby-place/nearby-place-
 import { NearbyPlaceListComponent } from './components/nearby-place/nearby-place-list/nearby-place-list.component';
 
 // PrimeNG
-import { GMapModule } from 'primeng/gmap';
-import { DropdownModule } from 'primeng/dropdown';
-import { PaginatorModule } from 'primeng/paginator';
+import { DropdownModule } from 'primeng/dropdown';;
 
 // Lottie
 import { LottieModule } from 'ngx-lottie';
@@ -52,9 +50,7 @@ export function playerFactory() {
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    GMapModule,
     DropdownModule,
-    PaginatorModule,
     LottieModule.forRoot({ player: playerFactory }),
     RouterModule.forRoot(appRoutes)
   ],
