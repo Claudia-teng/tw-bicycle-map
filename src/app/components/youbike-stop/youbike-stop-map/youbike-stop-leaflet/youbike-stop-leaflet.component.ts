@@ -20,17 +20,19 @@ export class YoubikeStopLeafletComponent implements AfterViewInit {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.isRent?.previousValue !== changes.isRent?.currentValue) {
+    if (changes.isRent) {
       this.initLayer();
       return;
     }
 
-    if (this.isFindNearby) {
-      this.navigateToUserLocation()
-    } else {
+    if (changes.isFindNearby?.currentValue === true) {
+      this.navigateToUserLocation();
+      return;
+    } 
+    
+    if (changes.stopResult) {
       this.navigateToCityLocation();
     }
-
   }
 
   ngAfterViewInit(): void {

@@ -13,6 +13,7 @@ import { youbikeCities } from '../youbike-cities/youbike-cities';
 
 export class YoubikeStopMapComponent {
   public loading: boolean = true;
+  public navigating: boolean = false;
 
   public cities: Array<SelectItem> = youbikeCities;
   public selectedCity: SelectItem;
@@ -24,7 +25,6 @@ export class YoubikeStopMapComponent {
   public isRent: boolean = true;
   public isFindNearby: boolean;
   public userLocation: Array<any>;
-  public locating: boolean = false;
 
   public stopResult: Array<BikeStation>;
   public stopMapResult: Array<BikeStation>;
@@ -71,8 +71,7 @@ export class YoubikeStopMapComponent {
   }
 
   public findCurrentPosition(): void {
-    this.isFindNearby = true;
-    this.locating = true;
+    this.navigating = true;
     navigator.geolocation.getCurrentPosition((position) => {
       this.userLocation = [position.coords.latitude, position.coords.longitude];
       this.currentLat = position.coords.latitude;
@@ -99,8 +98,11 @@ export class YoubikeStopMapComponent {
           }
         })
       });
-      this.stopMapResult = this.stopResult;
-      this.locating = false;
+      setTimeout(() =>{
+        this.stopMapResult = this.stopResult;
+        this.navigating = false;
+        this.isFindNearby = true;
+      }, 800)
     })
   }
 }
