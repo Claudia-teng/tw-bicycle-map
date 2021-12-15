@@ -22,7 +22,7 @@
       <div class="card" *ngFor="let lane of laneResult" (click)="navigateToMap(lane)">
         <p>{{ lane.RouteName }}</p>
         <div>
-          <div>{{ lane.CyclingLength }} km</div>
+          <div>{{ lane.CyclingLength ? lane.CyclingLength : '-' }} km</div>
           <div>
             <img src="assets/card-marker.png">
             <p>{{ lane.City }} {{ lane.Town }}</p>
