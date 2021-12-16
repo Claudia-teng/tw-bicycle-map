@@ -44,25 +44,30 @@
         width: 2rem
         height: 2rem
         margin-right: .5rem
-      .map-btn
-        background-color: var(--yellow)
-        padding: .5rem 1rem
-        border-radius: 50px
-        cursor: pointer
-        margin-left: .5rem
+    .map-btn
+      width: 7rem
+      background-color: var(--yellow)
+      padding: .5rem 1rem
+      border-radius: 50px
+      cursor: pointer
+      margin-left: .5rem
     p
       color: var(--gray)
 
 @include breakpoint(pad)
+  .topbar
+    height: 8%
   .loading
     img
       width: 20%
-  .container .content
-    width: 90%
+  .container
+    height: 92%
 
 @include breakpoint(phone)
+  .topbar
+    height: 8%
   .loading
     img
       width: 20%
-  .container .content
-    width: 90%
+  .container
+    height: 92%

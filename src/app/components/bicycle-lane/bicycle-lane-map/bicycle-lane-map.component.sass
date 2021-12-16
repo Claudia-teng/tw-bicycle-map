@@ -1,3 +1,5 @@
+@import '../../../../styles'
+
 .topbar
   height: 10%
   background-color: var(--yellow)
@@ -12,3 +14,15 @@
 .map
   height: 90%
   position: relative
+
+@include breakpoint(pad)
+  .topbar
+    height: 8%
+  .map
+    height: 92%
+
+@include breakpoint(phone)
+  .topbar
+    height: 8%
+  .map
+    height: 92%

@@ -96,9 +96,15 @@
       color: var(--yellow)
 
 @include breakpoint(pad)
+  .topbar
+    height: 8%
+
   .loading
     img
       width: 20%
+
+  .result
+    height: 92%
 
   .card-area
     padding: 0rem 1.5rem
@@ -107,9 +113,14 @@
     width: calc((100% - 1rem * 4) / 2)
 
 @include breakpoint(phone)
+  .topbar
+    height: 8%
+    
   .loading
     img
       width: 20%
+  .result
+    height: 92%
 
   .card-area
     padding: 0rem 1rem

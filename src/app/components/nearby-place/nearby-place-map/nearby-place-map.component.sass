@@ -1,3 +1,5 @@
+@import '../../../../styles'
+  
 .topbar
   height: 10%
   background-color: var(--yellow)
@@ -19,3 +21,15 @@
   .leaflet-div-icon
     background: unset
     border: unset
+
+@include breakpoint(pad)
+  .topbar
+    height: 8%
+  .map-area
+    height: 92%
+
+@include breakpoint(phone)
+  .topbar
+    height: 8%
+  .map-area
+    height: 92%
