@@ -21,7 +21,7 @@ export class BicycleLaneListComponent {
               private bicycleLaneService: BicycleLaneService) {}
 
   ngOnInit() {
-    this.selectedCity = this.cities[0];
+    this.selectedCity = JSON.parse(localStorage.getItem('city')) ?? this.cities[0];
     this.onCityChange();
   }
 
@@ -31,6 +31,7 @@ export class BicycleLaneListComponent {
 
   public onCityChange(): void {
     this.loading = true;
+    localStorage.setItem('city', JSON.stringify(this.selectedCity));
     this.bicycleLaneService.getLaneByCity(this.selectedCity.value).subscribe(res => {
       this.laneResult = res;
       this.laneResult.forEach(lane => {
