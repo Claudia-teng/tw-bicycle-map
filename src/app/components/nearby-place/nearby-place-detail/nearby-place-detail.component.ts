@@ -41,7 +41,7 @@ export class NearbyPlaceDetailComponent {
   public navigateToPlaceMap(): void {
     this.router.navigate(['nearby-place-map'], {
       queryParams: {
-        placeName: this.isSpot ? this.spotDetail.Name : this.foodDetail.Name,
+        placeName: this.isSpot ? this.spotDetail.ScenicSpotName : this.foodDetail.RestaurantName,
         locationLat: this.isSpot ? this.spotDetail.Position.PositionLat : this.foodDetail.Position.PositionLat,
         locationLon: this.isSpot ? this.spotDetail.Position.PositionLon : this.foodDetail.Position.PositionLon,
       }

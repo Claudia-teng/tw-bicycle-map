@@ -3,7 +3,6 @@ import { PointType, TourismPicture } from "../index";
 export interface ScenicSpotTourismInfo {
   ID: string,
   ScenicSpotID: string,
-  Name?: string,
   ScenicSpotName?: string,
   DescriptionDetail?: string,
   Description?: string,

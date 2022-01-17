@@ -81,10 +81,10 @@ export class NearbyPlaceListComponent {
     this.isSpot ? this.findNearbySpots() : this.checkCurrentLocationExist();
   }
 
-  public navigateToPlaceDetail(place: ScenicSpotTourismInfo | RestaurantTourismInfo): void {
+  public navigateToPlaceDetail(place: any): void {
     this.router.navigate(['nearby-place-detail'], {
       queryParams: {
-        placeName: place.Name,
+        placeName: this.isSpot ? place.ScenicSpotName : place.RestaurantName,
         isSpot: this.isSpot ? 'Y' : 'N'
       }
     })

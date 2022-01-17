@@ -3,7 +3,6 @@ import { TourismPicture, PointType } from "../index"
 export interface RestaurantTourismInfo {
   ID: string,
   RestaurantID: string
-  Name?: string,
   RestaurantName?: string,
   Description?: string,
   Address?: string,

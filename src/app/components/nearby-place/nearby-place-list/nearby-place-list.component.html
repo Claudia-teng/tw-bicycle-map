@@ -33,7 +33,7 @@
         <div class="card" *ngFor="let spot of spotResults" (click)="navigateToPlaceDetail(spot)">
           <img [src]="spot.Picture.PictureUrl1">
           <div>
-            <p>{{ spot.Name }}</p>
+            <p>{{ spot.ScenicSpotName }}</p>
             <p>
               <img src="assets/phone-icon.png" />
               {{ spot.Phone }}
@@ -45,7 +45,7 @@
         <div class="card" *ngFor="let food of foodResults" (click)="navigateToPlaceDetail(food)">
           <img [src]="food.Picture.PictureUrl1">
           <div>
-            <p>{{ food.Name }}</p>
+            <p>{{ food.RestaurantName }}</p>
             <p>
               <img src="assets/phone-icon.png" />
               {{ food.Phone }}
