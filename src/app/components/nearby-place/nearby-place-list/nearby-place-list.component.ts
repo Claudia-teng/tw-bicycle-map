@@ -14,6 +14,7 @@ import { nearbyPlaceCities } from './nearby-place-cities/nearby-place-cities';
 export class NearbyPlaceListComponent {
 
   public loading: boolean;
+  public showError: boolean;
   public isSpot: boolean = true;
   public cities: Array<SelectItem> = nearbyPlaceCities;
   public selectedCity: SelectItem;
@@ -29,14 +30,17 @@ export class NearbyPlaceListComponent {
               private nearbyPlaceService: NearbyPlaceService) {}
 
   ngOnInit() {
-    // this.selectedCity = this.cities[0];
     this.loading = true;
-    navigator.geolocation.getCurrentPosition((location) => {
-      this.currentLat = location.coords.latitude;
-      this.currentLon = location.coords.longitude;
-      this.findNearbySpots();
-    })
-    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((location) => {
+        this.currentLat = location.coords.latitude;
+        this.currentLon = location.coords.longitude;
+        this.findNearbySpots();
+      }, (err) => {
+        this.loading = false;
+        this.showError = true;
+      })
+    }
   }
 
   public findNearbySpots(): void {
@@ -77,6 +81,7 @@ export class NearbyPlaceListComponent {
 
   public onToggleView(): void {
     this.isSpot = !this.isSpot;
+    if (this.showError) return;
     this.loading = true;
     this.isSpot ? this.findNearbySpots() : this.checkCurrentLocationExist();
   }

@@ -25,7 +25,5 @@ export class NearbyPlaceService {
   public getRestuarantByName(name: string): Observable<Array<RestaurantTourismInfo>>{
     return this.http.get<Array<RestaurantTourismInfo>>(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$filter=contains(RestaurantName,'${name}')&$format=JSON`);
   }
-
-
 }
 

@@ -58,6 +58,11 @@
           <p>無搜尋結果</p>
         </div>
       </ng-container>
+      <ng-container *ngIf="showError">
+        <div class="no-result">
+          <div>無法定位，請開啟定位功能。</div>
+        </div>
+      </ng-container>
     </div>
   </div>
 </ng-template>
